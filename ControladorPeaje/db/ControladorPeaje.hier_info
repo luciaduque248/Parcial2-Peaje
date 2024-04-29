@@ -1,0 +1,40 @@
+|ControladorPeaje
+reloj => estadoActual~1.DATAIN
+reiniciar => estadoActual~3.DATAIN
+sensorDelantero => Selector1.IN3
+sensorDelantero => Selector0.IN2
+sensorTrasero => proximoEstado.CerrandoBarreraEntrada.DATAB
+sensorTrasero => Selector3.IN2
+entradaTag[0] => categoriaVehiculo[0].DATAIN
+entradaTag[0] => Equal0.IN4
+entradaTag[1] => categoriaVehiculo[1].DATAIN
+entradaTag[1] => Equal0.IN3
+entradaTag[2] => categoriaVehiculo[2].DATAIN
+entradaTag[2] => Equal0.IN2
+entradaTag[3] => Equal0.IN1
+entradaTag[3] => Equal1.IN0
+entradaTag[3] => Equal2.IN1
+entradaTag[3] => Equal3.IN1
+entradaTag[4] => Equal0.IN0
+entradaTag[4] => Equal1.IN1
+entradaTag[4] => Equal2.IN0
+entradaTag[4] => Equal3.IN0
+barreraEntrada <= barreraEntrada.DB_MAX_OUTPUT_PORT_TYPE
+barreraSalida <= barreraSalida.DB_MAX_OUTPUT_PORT_TYPE
+senalAlarma <= senalAlarma.DB_MAX_OUTPUT_PORT_TYPE
+ledVerde <= ledVerde.DB_MAX_OUTPUT_PORT_TYPE
+ledRojo <= ledRojo.DB_MAX_OUTPUT_PORT_TYPE
+ledsCategoria[0] <= ledsCategoria.DB_MAX_OUTPUT_PORT_TYPE
+ledsCategoria[1] <= ledsCategoria.DB_MAX_OUTPUT_PORT_TYPE
+ledsCategoria[2] <= ledsCategoria.DB_MAX_OUTPUT_PORT_TYPE
+displaySieteSegmentos[0] <= <GND>
+displaySieteSegmentos[1] <= <GND>
+displaySieteSegmentos[2] <= <GND>
+displaySieteSegmentos[3] <= <GND>
+displaySieteSegmentos[4] <= <GND>
+displaySieteSegmentos[5] <= <GND>
+displaySieteSegmentos[6] <= <GND>
+semaforoRojo <= semaforoRojo.DB_MAX_OUTPUT_PORT_TYPE
+semaforoVerde <= semaforoVerde.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,0 +1,14 @@
+
+State Machine - |ControladorPeaje|estadoActual
+Name estadoActual.Alarma estadoActual.CerrandoBarreraSalida estadoActual.AbriendoBarreraSalida estadoActual.CerrandoBarreraEntrada estadoActual.VehiculoDentro estadoActual.AbriendoBarreraEntrada estadoActual.TagInvalida estadoActual.TagValida estadoActual.LeyendoTag estadoActual.EsperandoVehiculo estadoActual.Inactivo 
+estadoActual.Inactivo 0 0 0 0 0 0 0 0 0 0 0 
+estadoActual.EsperandoVehiculo 0 0 0 0 0 0 0 0 0 1 1 
+estadoActual.LeyendoTag 0 0 0 0 0 0 0 0 1 0 1 
+estadoActual.TagValida 0 0 0 0 0 0 0 1 0 0 1 
+estadoActual.TagInvalida 0 0 0 0 0 0 1 0 0 0 1 
+estadoActual.AbriendoBarreraEntrada 0 0 0 0 0 1 0 0 0 0 1 
+estadoActual.VehiculoDentro 0 0 0 0 1 0 0 0 0 0 1 
+estadoActual.CerrandoBarreraEntrada 0 0 0 1 0 0 0 0 0 0 1 
+estadoActual.AbriendoBarreraSalida 0 0 1 0 0 0 0 0 0 0 1 
+estadoActual.CerrandoBarreraSalida 0 1 0 0 0 0 0 0 0 0 1 
+estadoActual.Alarma 1 0 0 0 0 0 0 0 0 0 1 

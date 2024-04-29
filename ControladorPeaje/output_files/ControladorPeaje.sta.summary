@@ -2,4 +2,76 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
+Type  : Slow 1200mV 85C Model Setup 'entradaTag[3]'
+Slack : -2.518
+TNS   : -2.518
+
+Type  : Slow 1200mV 85C Model Setup 'reloj'
+Slack : -2.004
+TNS   : -8.430
+
+Type  : Slow 1200mV 85C Model Hold 'entradaTag[3]'
+Slack : -0.403
+TNS   : -0.403
+
+Type  : Slow 1200mV 85C Model Hold 'reloj'
+Slack : -0.335
+TNS   : -1.017
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'reloj'
+Slack : -3.000
+TNS   : -14.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'entradaTag[3]'
+Slack : -3.000
+TNS   : -4.371
+
+Type  : Slow 1200mV 0C Model Setup 'entradaTag[3]'
+Slack : -2.215
+TNS   : -2.215
+
+Type  : Slow 1200mV 0C Model Setup 'reloj'
+Slack : -1.784
+TNS   : -7.049
+
+Type  : Slow 1200mV 0C Model Hold 'entradaTag[3]'
+Slack : -0.364
+TNS   : -0.364
+
+Type  : Slow 1200mV 0C Model Hold 'reloj'
+Slack : -0.270
+TNS   : -0.836
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'reloj'
+Slack : -3.000
+TNS   : -14.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'entradaTag[3]'
+Slack : -3.000
+TNS   : -3.647
+
+Type  : Fast 1200mV 0C Model Setup 'entradaTag[3]'
+Slack : -1.477
+TNS   : -1.477
+
+Type  : Fast 1200mV 0C Model Setup 'reloj'
+Slack : -1.101
+TNS   : -4.057
+
+Type  : Fast 1200mV 0C Model Hold 'reloj'
+Slack : -0.318
+TNS   : -1.091
+
+Type  : Fast 1200mV 0C Model Hold 'entradaTag[3]'
+Slack : -0.226
+TNS   : -0.226
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'reloj'
+Slack : -3.000
+TNS   : -14.624
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'entradaTag[3]'
+Slack : -3.000
+TNS   : -4.763
+
 ------------------------------------------------------------
