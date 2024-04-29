@@ -1,0 +1,126 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity ControladorPeaje is
+    port (
+        clk, reset : in std_logic;
+        front_sensor, back_sensor : in std_logic;
+        tag_input : in std_logic_vector(4 downto 0);
+        entry_gate, exit_gate : out std_logic;
+        alarm, green_led, red_led : out std_logic;
+        category_leds : out std_logic_vector(2 downto 0);
+        seven_segment : out std_logic_vector(6 downto 0);
+        semaphore_red, semaphore_green : out std_logic
+    );
+end entity ControladorPeaje;
+
+architecture Behavioral of ControladorPeaje is
+    type state_type is (Idle, WaitingVehicle, ReadingTag, ValidTag, InvalidTag,
+                        OpeningEntryGate, VehicleInside, ClosingEntryGate,
+                        OpeningExitGate, ClosingExitGate, Alarm);
+    signal current_state, next_state : state_type;
+
+    -- Señales auxiliares
+    signal vehicle_counter : unsigned(7 downto 0) := (others => '0');
+    signal vehicle_category : unsigned(2 downto 0);
+    signal vehicle_time : unsigned(15 downto 0) := (others => '0');
+    signal barrier_close_time : unsigned(15 downto 0) := (others => '0');
+    signal toll_fee : unsigned(7 downto 0) := (others => '0');
+
+begin
+    -- Proceso de memoria de estados
+    state_register : process(clk, reset)
+    begin
+        if reset = '1' then
+            current_state <= Idle;
+        elsif rising_edge(clk) then
+            current_state <= next_state;
+        end if;
+    end process state_register;
+
+    -- Proceso de lógica de transición de estados
+    next_state_logic : process(current_state, front_sensor, back_sensor, tag_input)
+    begin
+        case current_state is
+            when Idle =>
+                if front_sensor = '1' then
+                    next_state <= WaitingVehicle;
+                else
+                    next_state <= Idle;
+                end if;
+
+            -- Agrega la lógica de transición para los demás estados
+            -- ...
+
+            when others =>
+                next_state <= Idle;
+        end case;
+    end process next_state_logic;
+
+    -- Proceso de lógica de salida
+    output_logic : process(current_state, vehicle_category, vehicle_counter, vehicle_time, barrier_close_time, toll_fee)
+    begin
+        -- Inicializar todas las salidas a '0'
+        entry_gate <= '0';
+        exit_gate <= '0';
+        alarm <= '0';
+        green_led <= '0';
+        red_led <= '0';
+        category_leds <= (others => '0');
+        seven_segment <= (others => '1'); -- Apagar display
+        semaphore_red <= '0';
+        semaphore_green <= '0';
+
+        case current_state is
+            when Idle =>
+                -- Asignar salidas para estado Idle
+
+            when ValidTag =>
+                green_led <= '1';
+                category_leds <= std_logic_vector(vehicle_category);
+
+            when InvalidTag =>
+                red_led <= '1';
+
+            when OpeningEntryGate =>
+                entry_gate <= '1';
+
+            when VehicleInside =>
+                -- Asignar salidas para cuando un vehículo está dentro
+
+            when ClosingEntryGate =>
+                -- Asignar salidas para cerrar la barrera de entrada
+
+            when OpeningExitGate =>
+                exit_gate <= '1';
+                semaphore_green <= '1';
+
+            when ClosingExitGate =>
+                -- Asignar salidas para cerrar la barrera de salida
+
+            when Alarm =>
+                alarm <= '1';
+                red_led <= '1';
+
+            when others =>
+                null;
+        end case;
+
+        -- Asignar el contador de vehículos al display de 7 segmentos
+        seven_segment <= std_logic_vector(vehicle_counter(3 downto 0));
+    end process output_logic;
+
+    -- Instanciar componentes existentes aquí
+    -- Por ejemplo:
+    -- calcular_tarifa_inst : entity work.Calcular_Tarifa
+    --     port map (
+    --         ...
+    --     );
+
+    -- control_vehicular_inst : entity work.ControlVehicular
+    --     port map (
+    --         ...
+    --     );
+
+    -- Agregar nuevos componentes o módulos según sea necesario
+end architecture Behavioral;
