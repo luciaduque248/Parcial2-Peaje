@@ -14,75 +14,90 @@ void setup() {
   Serial.begin(9600); // Inicia la comunicación serial a 9600 baudios
   lcd.begin(16, 2);   // Inicia el LCD con 16 columnas y 2 filas
 
-  // Configura los pines como salidas
-  pinMode(pinTiempo, OUTPUT);
-  pinMode(pinMensaje2, OUTPUT);
-  pinMode(pinMensaje3, OUTPUT);
-  pinMode(pinMensaje4, OUTPUT);
-  pinMode(pinMensaje5, OUTPUT);
-  pinMode(pinMensaje6, OUTPUT);
-  pinMode(pinMensaje7, OUTPUT);
-  pinMode(pinMensaje8, OUTPUT);
+  // Configura los pines como entradas
+  pinMode(pinTiempo, INPUT);
+  pinMode(pinMensaje2, INPUT);
+  pinMode(pinMensaje3, INPUT);
+  pinMode(pinMensaje4, INPUT);
+  pinMode(pinMensaje5, INPUT);
+  pinMode(pinMensaje6, INPUT);
+  pinMode(pinMensaje7, INPUT);
+  pinMode(pinMensaje8, INPUT);
 }
 
 void loop() {
-  if (Serial.available() >= 2) { // Verifica si hay al menos 2 bytes disponibles
-    byte estado = Serial.read(); // Lee el estado del peaje
-    byte dato = Serial.read(); // Lee el dato enviado desde la FPGA
+    char cadena[8];
+
+    cadena[0] = digitalRead(pinTiempo); 
+    cadena[1] = digitalRead(pinMensaje2); 
+    cadena[2] = digitalRead(pinMensaje3); 
+    cadena[3] = digitalRead(pinMensaje4); 
+    cadena[4] = digitalRead(pinMensaje5); 
+    cadena[5] = digitalRead(pinMensaje6); 
+    cadena[6] = digitalRead(pinMensaje7); 
+    cadena[7] = digitalRead(pinMensaje8); 
+    
+    long valorBinario = strtol(cadena, NULL, 2); 
+
     // Procesa los datos según el estado del peaje
-    switch (estado) {
+    switch (valorBinario) {
       case 1: // EsperandoVehiculo
-        digitalWrite(pinTiempo, HIGH); // Activa el pin correspondiente
-        lcd.clear();
-        lcd.print("Tiempo: ");
-        lcd.print(dato);
-        Serial.println("Esperando vehiculo");
+        if (digitalRead(pinTiempo) == HIGH) {
+            lcd.clear();
+            lcd.print("Tiempo: ");
+            Serial.println("Esperando vehiculo");
+        }
         break;
       case 2: // LeyendoTag
-        digitalWrite(pinMensaje2, HIGH); // Activa el pin correspondiente
-        lcd.clear();
-        lcd.print("Leyendo Tag");
-        Serial.println("Leyendo tag");
+        if (digitalRead(pinMensaje2) == HIGH) {
+            lcd.clear();
+            lcd.print("Leyendo Tag");
+            Serial.println("Leyendo tag");
+        }
         break;
       case 3: // TagValida
-        digitalWrite(pinMensaje3, HIGH); // Activa el pin correspondiente
-        lcd.clear();
-        lcd.print("Categoria: ");
-        lcd.print(dato);
-        Serial.println("Categoria valida");
+        if (digitalRead(pinMensaje3) == HIGH) {
+            lcd.clear();
+            lcd.print("Categoria: ");
+            Serial.println("Categoria valida");
+        }
         break;
       case 4: // TagInvalida
-        digitalWrite(pinMensaje4, HIGH); // Activa el pin correspondiente
-        lcd.clear();
-        lcd.print("Tag Invalido");
-        Serial.println("Tag invalido");
+        if (digitalRead(pinMensaje4) == HIGH) {
+            lcd.clear();
+            lcd.print("Tag Invalido");
+            Serial.println("Tag invalido");
+        }
         break;
       case 5: // AbriendoBarreraEntrada
-        digitalWrite(pinMensaje5, HIGH); // Activa el pin correspondiente
-        lcd.clear();
-        lcd.print("Abriendo");
-        Serial.println("Abriendo barrera de entrada");
+        if (digitalRead(pinMensaje5) == HIGH) {
+            lcd.clear();
+            lcd.print("Abriendo");
+            Serial.println("Abriendo barrera de entrada");
+        }
         break;
       case 6: // VehiculoDentro
-        digitalWrite(pinMensaje6, HIGH); // Activa el pin correspondiente
-        lcd.clear();
-        lcd.print("Vehiculo Dentro");
-        Serial.println("Vehiculo dentro");
+        if (digitalRead(pinMensaje6) == HIGH) {
+            lcd.clear();
+            lcd.print("Vehiculo Dentro");
+            Serial.println("Vehiculo dentro");
+        }
         break;
       case 7: // CerrandoBarreraEntrada
-        digitalWrite(pinMensaje7, HIGH); // Activa el pin correspondiente
-        lcd.clear();
-        lcd.print("Cerrando");
-        Serial.println("Cerrando barrera de entrada");
+        if (digitalRead(pinMensaje7) == HIGH) {
+            lcd.clear();
+            lcd.print("Cerrando");
+            Serial.println("Cerrando barrera de entrada");
+        }
         break;
       case 8: // AbriendoBarreraSalida
-        digitalWrite(pinMensaje8, HIGH); // Activa el pin correspondiente
-        lcd.clear();
-        lcd.print("Abriendo");
-        Serial.println("Abriendo barrera de salida");
+        if (digitalRead(pinMensaje8) == HIGH) {
+            lcd.clear();
+            lcd.print("Abriendo");
+            Serial.println("Abriendo barrera de salida");
+        }
         break;
       default:
         break;
     }
-  }
 }
