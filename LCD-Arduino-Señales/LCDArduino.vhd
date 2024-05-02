@@ -1,0 +1,61 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity LCDArduino is
+    port ( 
+        clk : in std_logic;
+        reset : in std_logic;
+        
+        -- Entradas desde el controlador del peaje
+        estado : in std_logic_vector(3 downto 0);                -- Estado actual del peaje
+        categoria_vehiculo : in std_logic_vector(2 downto 0);    -- Categoría del vehículo
+        tiempo_vehiculo : in std_logic_vector(15 downto 0);      -- Tiempo del vehículo en el peaje
+        tarifa_peaje : in std_logic_vector(7 downto 0);          -- Tarifa del peaje
+        
+        -- Salidas hacia Arduino
+        datos_lcd : out std_logic_vector(7 downto 0);            -- Datos a enviar al LCD
+        habilitador_lcd : in std_logic                          -- Señal de habilitación para Arduino
+    );
+end entity LCDArduino;
+
+architecture rtl of LCDArduino is
+begin
+    proceso_lcd : process (clk, reset)
+    begin
+        if reset = '1' then
+            datos_lcd <= (others => '0');
+        elsif rising_edge(clk) then
+            if habilitador_lcd = '1' then
+                case estado is
+                    when "0000" => -- Inactivo
+                        datos_lcd <= "00000000"; -- No mostrar nada
+                    when "0001" => -- EsperandoVehiculo
+                        datos_lcd <= "01000101"; -- Mensaje: "Esperando"
+                    when "0010" => -- LeyendoTag
+                        datos_lcd <= "01001100"; -- Mensaje: "Leyendo Tag"
+                    when "0011" => -- TagValida
+                        datos_lcd <= "00000" & categoria_vehiculo; -- Categoría del vehículo
+                    when "0100" => -- TagInvalida
+                        datos_lcd <= "01001101"; -- Mensaje: "Tag Inválido"
+                    when "0101" => -- AbriendoBarreraEntrada
+                        datos_lcd <= "01000010"; -- Mensaje: "Abriendo"
+                    when "0110" => -- VehiculoDentro
+                        datos_lcd <= "00111100"; -- Mostrar tiempo del vehículo (60 segundos en binario)
+                    when "0111" => -- CerrandoBarreraEntrada
+                        datos_lcd <= "01000011"; -- Mensaje: "Cerrando"
+                    when "1000" => -- AbriendoBarreraSalida
+                        datos_lcd <= "01000010"; -- Mensaje: "Abriendo"
+                    when "1001" => -- CerrandoBarreraSalida
+                        datos_lcd <= "01000011"; -- Mensaje: "Cerrando"
+                    when "1010" => -- Alarma
+                        datos_lcd <= "01000001"; -- Mensaje: "Alarma"
+                    when others =>
+                        datos_lcd <= (others => '0');
+                end case;
+            else
+                datos_lcd <= (others => '0'); -- Si habilitador_lcd es '0', no enviar datos al LCD
+            end if;
+        end if;
+    end process proceso_lcd;
+end architecture rtl;
