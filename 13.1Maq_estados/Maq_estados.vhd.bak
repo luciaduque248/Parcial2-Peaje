@@ -1,0 +1,62 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity Maq_estados is
+port ( front_sensor, back_sensor, id, cobrar, reset: in std_logic;
+        tala_ini, tala_fin, alar_son, led, sema_ini, sema_fin: out std_logic; )
+end Maq_estados;
+
+architecture arch_Maq_estados of Maq_estados is 
+type state_type is (inicio, identificador, cobro, salida, incorrecto,);
+signal next_state : state_type;
+signal current_state : state_type;
+begin 
+STATE_MEMORY : process (CLK, reset)
+signal x: std_logic;
+begin
+
+if (reset ='0') then
+current_state <= inicio;
+elsif (CLK'event and CLK='1') then
+current_state <= next_state;
+end if;
+end process;
+
+Next_state_logic: process (current_state, x )
+
+when inicio => if (front_sensor='1') then 
+x='1'
+next_state <= identificador;
+elsif (x='0') then 
+next_state <= x;
+else 
+next_state <= inicio;
+end if;
+
+when identificador => if (id='1') then 
+x='1' 
+next_state <= cobro;
+elsif (x='0') then 
+next_state <= incorrecto;
+end if; 
+
+when cobro => if (cobrar= '1') then 
+x='1'
+next_state <= salida; 
+elsif (x='0') then 
+next_state <=x;
+else 
+next_state <= cobro;
+end if;
+
+when salida => if (back_sensor='1') then 
+x='1'
+next_state <= inicio;
+elsif (x='0') then 
+next_state <=x;
+else 
+next_state <=salida;
+end if; 
+end process; 
+end arch_Maq_estados;
+
