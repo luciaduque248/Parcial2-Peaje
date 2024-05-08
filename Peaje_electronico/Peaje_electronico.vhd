@@ -161,6 +161,34 @@ architecture Peaje_electronico_arch of Peaje_electronico is
             CLK_OUT : buffer std_logic        -- Señal de salida de reloj dividida
         );
     end component;
+	 
+	 
+	 -------------------------------------- Maquina De Estados ------------------------------------------------------------------------
+	 ----------------------------------------------------------------------------------------------------------------------------------
+	 
+	 -- Componente de la Maquina De Estados
+	 component Maq_estados is
+        port (
+            clk, front_sensor, back_sensor, cobrar, reset: in std_logic;
+            cat: in std_logic_vector(1 downto 0);
+            id: in std_logic_vector(2 downto 0);
+            tala_ini, tala_fin, alar_son, led, sema_ini, sema_fin, cont_vehiculo: out std_logic;
+            contador: buffer integer range 0 to 2
+        );
+    end component;
+	 
+	 -- Señales para conectar Maq_estados
+    signal front_sensor_maq : std_logic;
+    signal back_sensor_maq : std_logic;
+    signal cobrar_maq : std_logic;
+    signal reset_maq : std_logic;
+    signal cat_maq : std_logic_vector(1 downto 0);
+    signal id_maq : std_logic_vector(2 downto 0);
+    signal tala_ini_maq, tala_fin_maq, alar_son_maq, led_maq, sema_ini_maq, sema_fin_maq, cont_vehiculo_maq : std_logic;
+    signal contador_maq : integer range 0 to 2;
+	 
+	 --------------------------------------------------------------------------------------------------------------------------------------
+	 --------------------------------------------------------------------------------------------------------------------------------------
 
 begin
 
@@ -239,5 +267,28 @@ begin
             CLK_IN => CLK,                     -- Conectar la señal de reloj de entrada
             CLK_OUT => clk_out_divisor  -- Conectar la señal de reloj dividida
         );
+	
+	-------------------------------------- Maquina De Estados ------------------------------------------------------------------------
+	----------------------------------------------------------------------------------------------------------------------------------
+	 
+	 -- Instanciación de Maq_estados
+    Maq_estados_inst : Maq_estados port map (
+        clk => CLK,
+        front_sensor => front_sensor_maq,
+        back_sensor => back_sensor_maq,
+        cobrar => cobrar_maq,
+        reset => reset_maq,
+        cat => cat_maq,
+        id => id_maq,
+        tala_ini => tala_ini_maq,
+        tala_fin => tala_fin_maq,
+        alar_son => alar_son_maq,
+        led => led_maq,
+        sema_ini => sema_ini_maq,
+        sema_fin => sema_fin_maq,
+        cont_vehiculo => cont_vehiculo_maq,
+        contador => contador_maq
+    );
+
 
 end architecture Peaje_electronico_arch;

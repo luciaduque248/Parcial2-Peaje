@@ -49,16 +49,6 @@ set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 6
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VHDL_FILE ../track_sensor/track_sensor.vhd
-set_global_assignment -name VHDL_FILE ../Semaforo_salida/Semaforo_salida.vhd
-set_global_assignment -name VHDL_FILE ../semaforo/SemaforoTalanquera.vhd
-set_global_assignment -name VHDL_FILE Peaje_electronico.vhd
-set_global_assignment -name VHDL_FILE ../Idvehicular/Id_vehiculo.vhd
-set_global_assignment -name VHDL_FILE ../front_sensor/Front_sensor.vhd
-set_global_assignment -name VHDL_FILE ../Div_Frecuencia/Divisor_Frecuencia.vhd
-set_global_assignment -name VHDL_FILE ../Display_sietesegmentos/Display_sevensegmentos.vhd
-set_global_assignment -name VHDL_FILE ../ControlVehicular/ControlVehicular.vhd
-set_global_assignment -name VHDL_FILE ../Calcular_Tarifa/Calcular_Tarifa.vhd
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
@@ -96,4 +86,15 @@ set_location_assignment PIN_F1 -to CATEGORIA_VEHICULO[2]
 set_location_assignment PIN_B1 -to LED_CATEGORIA_0
 set_location_assignment PIN_B2 -to LED_CATEGORIA_1
 set_location_assignment PIN_C2 -to LED_CATEGORIA_2
+set_global_assignment -name VHDL_FILE ../13.1Maq_estados/Maq_estados.vhd
+set_global_assignment -name VHDL_FILE ../track_sensor/track_sensor.vhd
+set_global_assignment -name VHDL_FILE ../Semaforo_salida/Semaforo_salida.vhd
+set_global_assignment -name VHDL_FILE ../semaforo/SemaforoTalanquera.vhd
+set_global_assignment -name VHDL_FILE Peaje_electronico.vhd
+set_global_assignment -name VHDL_FILE ../Idvehicular/Id_vehiculo.vhd
+set_global_assignment -name VHDL_FILE ../front_sensor/Front_sensor.vhd
+set_global_assignment -name VHDL_FILE ../Div_Frecuencia/Divisor_Frecuencia.vhd
+set_global_assignment -name VHDL_FILE ../Display_sietesegmentos/Display_sevensegmentos.vhd
+set_global_assignment -name VHDL_FILE ../ControlVehicular/ControlVehicular.vhd
+set_global_assignment -name VHDL_FILE ../Calcular_Tarifa/Calcular_Tarifa.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
