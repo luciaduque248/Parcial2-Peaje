@@ -1,0 +1,40 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+entity MaqEstados_testbench is 
+end entity;
+
+architecture MaqEstados_testbench_arch of MaqEstados_testbench is
+
+	component Maq_Estados 					-- Component Declaration 
+		port (clk, front_sensor, back_sensor, cobrar, reset: in std_logic;
+        cat: in std_logic_vector(1 downto 0);
+        id: in std_logic_vector(2 downto 0);
+        tala_ini, tala_fin, alar_son, led, sema_ini, sema_fin, cont_vehiculo: out std_logic;
+        contador: buffer integer range 0 to 2
+    );
+	end component ;
+	
+	signal A_TB, B_TB, C_TB : std_logic; 	-- Signal Declaration
+	signal F_TB 				: std_logic;
+	
+	begin
+	DUT1 : SystemX port map(A => A_TB, -- DUT Instantiation
+									B => B_TB,
+									C => C_TB,
+									F => F_TB);
+										
+	-- Stimulus Generation ;
+		STIMULUS : process
+			begin
+				A_TB <= '0'; B_TB <= '0'; C_TB <= '0'; wait for 2ns;
+				A_TB <= '0'; B_TB <= '0'; C_TB <= '1'; wait for 2ns;
+				A_TB <= '0'; B_TB <= '1'; C_TB <= '0'; wait for 2ns;
+				A_TB <= '0'; B_TB <= '1'; C_TB <= '1'; wait for 2ns;
+				A_TB <= '1'; B_TB <= '0'; C_TB <= '0'; wait for 2ns;
+				A_TB <= '1'; B_TB <= '0'; C_TB <= '1'; wait for 2ns;
+				A_TB <= '1'; B_TB <= '1'; C_TB <= '0'; wait for 2ns;
+				A_TB <= '1'; B_TB <= '1'; C_TB <= '1'; wait for 2ns;
+			end process ;
+	
+end SystemX_TB_arch;
