@@ -10,6 +10,7 @@ entity Peaje_electronico is
         DETECTOR_VEHICULO : in std_logic;                        -- Señal que indica la detección de un vehículo
         ABRIR_TALANQUERA : in std_logic;                         -- Señal que indica el estado de la barrera manual (1 cerrado, 0 abierto)
         IDVALIDA : in std_logic;                                 -- Señal de identificación válida
+		  ID_PEAJE: in std_logic_vector(2 downto 0); 
 		  CATEGORIA_VEHICULO : in std_logic_vector(2 downto 0);             -- Categoría del vehículo (3 bits)
 		  
 		  FRONT_SENSOR_PEAJE : in std_logic;  
@@ -90,7 +91,7 @@ architecture Peaje_electronico_arch of Peaje_electronico is
             --entradas
             CLK : in std_logic;                     -- Señal de reloj
             REINICIO : in std_logic;                -- Señal de reinicio
-            ID : in std_logic_vector(4 downto 0);   -- Identificación vehícular categoría y ID
+            ID : in std_logic_vector(2 downto 0);   -- Identificación vehícular categoría y ID
             IDVALIDA : in std_logic;                 -- Señal de identificación válida
             --salidas
             ABRIR_TALANQUERA : out std_logic;       -- Señal para abrir la barrera
@@ -225,7 +226,7 @@ begin
     Id_vehiculo_inst : Id_vehiculo port map (
         CLK => CLK,
         REINICIO => REINICIO,
-        ID => (others => '0'),  -- Asegúrate de conectar correctamente la señal de ID
+        ID => ID_PEAJE,  -- Asegúrate de conectar correctamente la señal de ID
         IDVALIDA => IDVALIDA,
         ABRIR_TALANQUERA => ABRIR_TALANQUERA_INTERNAL,
         LED_AUTORIZADO_VERDE => LED_AUTORIZADO_VERDE,
@@ -291,7 +292,7 @@ begin
         cobrar => cobrar_maq,
         reset => REINICIO,
         cat => CATEGORIA_VEHICULO,
-        id => id_maq,
+        id => ID_PEAJE,
         tala_ini => tala_ini_maq,
         tala_fin => tala_fin_maq,
         alar_son => alar_son_maq,

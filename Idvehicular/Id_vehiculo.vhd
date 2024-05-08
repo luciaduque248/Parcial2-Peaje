@@ -5,7 +5,7 @@ entity Id_vehiculo is
     port (
         CLK : in std_logic;                     -- Señal de reloj
         REINICIO : in std_logic;                -- Señal de reinicio
-        ID : in std_logic_vector(4 downto 0);   -- Identificación vehícular categoría y ID
+        ID : in std_logic_vector(2 downto 0);   -- Identificación vehícular categoría y ID
         IDVALIDA : in std_logic;                -- Señal de identificación válida
         ABRIR_TALANQUERA : out std_logic;       -- Señal para abrir la barrera
         LED_AUTORIZADO_VERDE : out std_logic;   -- LED verde para indicar identificación válida
@@ -45,7 +45,7 @@ begin
                     -- Encender el LED verde si la identificación es válida
                     LED_AUTORIZADO_VERDE  <= '1';
                 else
-                    case ID(4 downto 3) is
+                    case ID(2 downto 1) is
                         when CATI =>
                             ABRIR_TALANQUERA <= '1';  -- Abrir la barrera para categoría I
                         when CATII =>
@@ -66,7 +66,5 @@ begin
         end if;
     end if;
 end process;
-
-
 
 end architecture Id_vehiculo_arch;
