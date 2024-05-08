@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Peaje_electronico
-Wed May 08 15:26:04 2024
+Wed May 08 15:59:43 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -15,17 +15,16 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. State Machine - |Peaje_electronico|Maq_estados:Maq_estados_inst|current_state
   9. State Machine - |Peaje_electronico|ControlVehicular:ControlVehicular_inst|ESTADO
- 10. User-Specified and Inferred Latches
- 11. Registers Removed During Synthesis
- 12. Removed Registers Triggering Further Register Optimizations
- 13. General Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Parameter Settings for User Entity Instance: Divisor_Frecuencia:Divisor_Frecuencia_inst
- 16. Port Connectivity Checks: "Maq_estados:Maq_estados_inst"
- 17. Port Connectivity Checks: "Calcular_Tarifa:Calcular_Tarifa_inst"
- 18. Port Connectivity Checks: "Id_vehiculo:Id_vehiculo_inst"
- 19. Elapsed Time Per Partition
- 20. Analysis & Synthesis Messages
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 14. Parameter Settings for User Entity Instance: Divisor_Frecuencia:Divisor_Frecuencia_inst
+ 15. Port Connectivity Checks: "Maq_estados:Maq_estados_inst"
+ 16. Port Connectivity Checks: "Calcular_Tarifa:Calcular_Tarifa_inst"
+ 17. Port Connectivity Checks: "Id_vehiculo:Id_vehiculo_inst"
+ 18. Elapsed Time Per Partition
+ 19. Analysis & Synthesis Messages
 
 
 
@@ -51,16 +50,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed May 08 15:26:03 2024      ;
+; Analysis & Synthesis Status        ; Successful - Wed May 08 15:59:43 2024      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; Peaje_electronico                          ;
 ; Top-level Entity Name              ; Peaje_electronico                          ;
 ; Family                             ; Cyclone III                                ;
-; Total logic elements               ; 83                                         ;
-;     Total combinational functions  ; 67                                         ;
-;     Dedicated logic registers      ; 66                                         ;
-; Total registers                    ; 66                                         ;
-; Total pins                         ; 52                                         ;
+; Total logic elements               ; 78                                         ;
+;     Total combinational functions  ; 62                                         ;
+;     Dedicated logic registers      ; 62                                         ;
+; Total registers                    ; 62                                         ;
+; Total pins                         ; 54                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -164,11 +163,12 @@ applicable agreement for further details.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;   0.0%      ;
+;     Processor 2            ; < 0.1%      ;
+;     Processors 3-8         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -195,28 +195,28 @@ applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 83        ;
+; Estimated Total logic elements              ; 78        ;
 ;                                             ;           ;
-; Total combinational functions               ; 67        ;
+; Total combinational functions               ; 62        ;
 ; Logic element usage by number of LUT inputs ;           ;
 ;     -- 4 input functions                    ; 13        ;
-;     -- 3 input functions                    ; 11        ;
+;     -- 3 input functions                    ; 6         ;
 ;     -- <=2 input functions                  ; 43        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 31        ;
+;     -- normal mode                          ; 26        ;
 ;     -- arithmetic mode                      ; 36        ;
 ;                                             ;           ;
-; Total registers                             ; 66        ;
-;     -- Dedicated logic registers            ; 66        ;
+; Total registers                             ; 62        ;
+;     -- Dedicated logic registers            ; 62        ;
 ;     -- I/O registers                        ; 0         ;
 ;                                             ;           ;
-; I/O pins                                    ; 52        ;
+; I/O pins                                    ; 54        ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ; Maximum fan-out node                        ; CLK~input ;
-; Maximum fan-out                             ; 67        ;
-; Total fan-out                               ; 523       ;
-; Average fan-out                             ; 2.21      ;
+; Maximum fan-out                             ; 62        ;
+; Total fan-out                               ; 500       ;
+; Average fan-out                             ; 2.16      ;
 +---------------------------------------------+-----------+
 
 
@@ -225,12 +225,10 @@ applicable agreement for further details.
 +---------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                              ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                   ; Library Name ;
 +---------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------+--------------+
-; |Peaje_electronico                                      ; 67 (0)            ; 66 (0)       ; 0           ; 0            ; 0       ; 0         ; 52   ; 0            ; |Peaje_electronico                                                    ; work         ;
+; |Peaje_electronico                                      ; 62 (0)            ; 62 (0)       ; 0           ; 0            ; 0       ; 0         ; 54   ; 0            ; |Peaje_electronico                                                    ; work         ;
 ;    |ControlVehicular:ControlVehicular_inst|             ; 52 (52)           ; 59 (59)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Peaje_electronico|ControlVehicular:ControlVehicular_inst             ; work         ;
 ;    |Display_sevensegmentos:Display_sevensegmentos_inst| ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Peaje_electronico|Display_sevensegmentos:Display_sevensegmentos_inst ; work         ;
-;    |Front_sensor:Front_sensor_inst|                     ; 4 (4)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Peaje_electronico|Front_sensor:Front_sensor_inst                     ; work         ;
 ;    |Id_vehiculo:Id_vehiculo_inst|                       ; 3 (3)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Peaje_electronico|Id_vehiculo:Id_vehiculo_inst                       ; work         ;
-;    |Semaforo_salida:Semaforo_salida_inst|               ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Peaje_electronico|Semaforo_salida:Semaforo_salida_inst               ; work         ;
 +---------------------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -262,40 +260,40 @@ Encoding Type:  One-Hot
 
 
 +---------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                               ;
-+----------------------------------------------------+---------------------+------------------------+
-; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
-+----------------------------------------------------+---------------------+------------------------+
-; Semaforo_salida:Semaforo_salida_inst|Estado        ; CLK                 ; yes                    ;
-; Number of user-specified and inferred latches = 1  ;                     ;                        ;
-+----------------------------------------------------+---------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
-
-
-+---------------------------------------------------------------------------------------------------+
 ; Registers Removed During Synthesis                                                                ;
 +----------------------------------------------------------+----------------------------------------+
 ; Register name                                            ; Reason for Removal                     ;
 +----------------------------------------------------------+----------------------------------------+
 ; Id_vehiculo:Id_vehiculo_inst|ABRIR_TALANQUERA            ; Stuck at GND due to stuck port data_in ;
-; Maq_estados:Maq_estados_inst|current_state.identificador ; Lost fanout                            ;
 ; Maq_estados:Maq_estados_inst|current_state.cobro         ; Lost fanout                            ;
-; Maq_estados:Maq_estados_inst|current_state.inicio        ; Lost fanout                            ;
-; Maq_estados:Maq_estados_inst|current_state.salida        ; Lost fanout                            ;
+; Maq_estados:Maq_estados_inst|current_state.identificador ; Lost fanout                            ;
 ; Maq_estados:Maq_estados_inst|current_state.incorrecto    ; Lost fanout                            ;
-; Front_sensor:Front_sensor_inst|CONTADOR_TIEMPO[3]        ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 7                    ;                                        ;
+; Front_sensor:Front_sensor_inst|DETECTOR_VEHICULO         ; Lost fanout                            ;
+; Front_sensor:Front_sensor_inst|CONTADOR_TIEMPO[0..3]     ; Lost fanout                            ;
+; Maq_estados:Maq_estados_inst|current_state.inicio        ; Lost fanout                            ;
+; Maq_estados:Maq_estados_inst|current_state.salida        ; Stuck at GND due to stuck port data_in ;
+; Front_sensor:Back_sensor_inst|CONTADOR_TIEMPO[0..3]      ; Lost fanout                            ;
+; Total Number of Removed Registers = 15                   ;                                        ;
 +----------------------------------------------------------+----------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                ;
-+--------------------------------------------------+--------------------+----------------------------------------------------+
-; Register name                                    ; Reason for Removal ; Registers Removed due to This Register             ;
-+--------------------------------------------------+--------------------+----------------------------------------------------+
-; Maq_estados:Maq_estados_inst|current_state.cobro ; Lost Fanouts       ; Maq_estados:Maq_estados_inst|current_state.inicio, ;
-;                                                  ;                    ; Maq_estados:Maq_estados_inst|current_state.salida  ;
-+--------------------------------------------------+--------------------+----------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                       ;
++--------------------------------------------------+--------------------+-----------------------------------------------------------+
+; Register name                                    ; Reason for Removal ; Registers Removed due to This Register                    ;
++--------------------------------------------------+--------------------+-----------------------------------------------------------+
+; Maq_estados:Maq_estados_inst|current_state.cobro ; Lost Fanouts       ; Maq_estados:Maq_estados_inst|current_state.identificador, ;
+;                                                  ;                    ; Maq_estados:Maq_estados_inst|current_state.incorrecto,    ;
+;                                                  ;                    ; Front_sensor:Front_sensor_inst|DETECTOR_VEHICULO,         ;
+;                                                  ;                    ; Front_sensor:Front_sensor_inst|CONTADOR_TIEMPO[0],        ;
+;                                                  ;                    ; Front_sensor:Front_sensor_inst|CONTADOR_TIEMPO[1],        ;
+;                                                  ;                    ; Front_sensor:Front_sensor_inst|CONTADOR_TIEMPO[2],        ;
+;                                                  ;                    ; Front_sensor:Front_sensor_inst|CONTADOR_TIEMPO[3],        ;
+;                                                  ;                    ; Maq_estados:Maq_estados_inst|current_state.inicio         ;
+; Front_sensor:Back_sensor_inst|CONTADOR_TIEMPO[0] ; Lost Fanouts       ; Front_sensor:Back_sensor_inst|CONTADOR_TIEMPO[1],         ;
+;                                                  ;                    ; Front_sensor:Back_sensor_inst|CONTADOR_TIEMPO[2],         ;
+;                                                  ;                    ; Front_sensor:Back_sensor_inst|CONTADOR_TIEMPO[3]          ;
++--------------------------------------------------+--------------------+-----------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -303,7 +301,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 66    ;
+; Total registers                              ; 62    ;
 ; Number of registers using Synchronous Clear  ; 32    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 46    ;
@@ -318,7 +316,7 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
-; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |Peaje_electronico|ControlVehicular:ControlVehicular_inst|TIEMPO_PASOVEHICULO[3]      ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |Peaje_electronico|ControlVehicular:ControlVehicular_inst|TIEMPO_PASOVEHICULO[2]      ;
 ; 5:1                ; 16 bits   ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |Peaje_electronico|ControlVehicular:ControlVehicular_inst|TIEMPOTALANQUERA_CERRADA[0] ;
 ; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |Peaje_electronico|ControlVehicular:ControlVehicular_inst|Selector0                   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------------------+
@@ -344,7 +342,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; alar_son      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; led           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; sema_ini      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; sema_fin      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; cont_vehiculo ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; contador      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -383,7 +380,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Wed May 08 15:26:02 2024
+    Info: Processing started: Wed May 08 15:59:41 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Peaje_electronico -c Peaje_electronico
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (12021): Found 2 design units, including 1 entities, in source file /users/dell/documents/vhdl/parcial2-grupal/13.1maq_estados/maq_estados.vhd
@@ -420,21 +417,16 @@ Info (12021): Found 2 design units, including 1 entities, in source file /users/
     Info (12022): Found design unit 1: Calcular_Tarifa-Calcular_Tarifa_arch
     Info (12023): Found entity 1: Calcular_Tarifa
 Info (12127): Elaborating entity "Peaje_electronico" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(66): object "tarifa_calculada" assigned a value but never read
-Warning (10541): VHDL Signal Declaration warning at Peaje_electronico.vhd(181): used implicit default value for signal "front_sensor_maq" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at Peaje_electronico.vhd(182): used implicit default value for signal "back_sensor_maq" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at Peaje_electronico.vhd(183): used implicit default value for signal "cobrar_maq" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at Peaje_electronico.vhd(184): used implicit default value for signal "reset_maq" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at Peaje_electronico.vhd(185): used implicit default value for signal "cat_maq" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10541): VHDL Signal Declaration warning at Peaje_electronico.vhd(186): used implicit default value for signal "id_maq" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
-Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(187): object "tala_ini_maq" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(187): object "tala_fin_maq" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(187): object "alar_son_maq" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(187): object "led_maq" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(187): object "sema_ini_maq" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(187): object "sema_fin_maq" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(187): object "cont_vehiculo_maq" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(188): object "contador_maq" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(70): object "tarifa_calculada" assigned a value but never read
+Warning (10541): VHDL Signal Declaration warning at Peaje_electronico.vhd(190): used implicit default value for signal "cobrar_maq" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10541): VHDL Signal Declaration warning at Peaje_electronico.vhd(193): used implicit default value for signal "id_maq" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
+Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(194): object "tala_ini_maq" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(194): object "tala_fin_maq" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(194): object "alar_son_maq" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(194): object "led_maq" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(194): object "sema_ini_maq" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(194): object "cont_vehiculo_maq" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(195): object "contador_maq" assigned a value but never read
 Info (12128): Elaborating entity "Front_sensor" for hierarchy "Front_sensor:Front_sensor_inst"
 Info (12128): Elaborating entity "Id_vehiculo" for hierarchy "Id_vehiculo:Id_vehiculo_inst"
 Info (12128): Elaborating entity "SemaforoTalanquera" for hierarchy "SemaforoTalanquera:SemaforoTalanquera_inst"
@@ -479,36 +471,39 @@ Info (12128): Elaborating entity "Maq_estados" for hierarchy "Maq_estados:Maq_es
 Warning (10036): Verilog HDL or VHDL warning at Maq_estados.vhd(18): object "x" assigned a value but never read
 Warning (10492): VHDL Process Statement warning at Maq_estados.vhd(38): signal "front_sensor" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at Maq_estados.vhd(46): signal "cat" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10620): VHDL warning at Maq_estados.vhd(46): comparison between unequal length operands always returns FALSE
 Warning (10492): VHDL Process Statement warning at Maq_estados.vhd(54): signal "cat" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Maq_estados.vhd(56): signal "contador" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Maq_estados.vhd(57): signal "contador" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10620): VHDL warning at Maq_estados.vhd(54): comparison between unequal length operands always returns FALSE
 Warning (10492): VHDL Process Statement warning at Maq_estados.vhd(61): signal "cat" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Maq_estados.vhd(61): signal "contador" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10620): VHDL warning at Maq_estados.vhd(61): comparison between unequal length operands always returns FALSE
 Warning (10492): VHDL Process Statement warning at Maq_estados.vhd(63): signal "cat" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10620): VHDL warning at Maq_estados.vhd(63): comparison between unequal length operands always returns TRUE
 Warning (10492): VHDL Process Statement warning at Maq_estados.vhd(69): signal "cobrar" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at Maq_estados.vhd(77): signal "back_sensor" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at Maq_estados.vhd(33): inferring latch(es) for signal or variable "contador", which holds its previous value in one or more paths through the process
 Warning (10492): VHDL Process Statement warning at Maq_estados.vhd(100): signal "current_state" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Info (10041): Inferred latch for "contador[0]" at Maq_estados.vhd(33)
-Info (10041): Inferred latch for "contador[1]" at Maq_estados.vhd(33)
-Warning (14025): LATCH primitive "Maq_estados:Maq_estados_inst|contador[0]" is permanently disabled
+Warning (10034): Output port "contador" at Maq_estados.vhd(10) has no driver
 Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "salidaSemaforoVerde" is stuck at GND
+    Warning (13410): Pin "salidaSemaforoRojo" is stuck at VCC
     Warning (13410): Pin "SemaforoRojoPeaje" is stuck at GND
     Warning (13410): Pin "SemaforoVerdePeaje" is stuck at VCC
     Warning (13410): Pin "manualBarrier" is stuck at GND
     Warning (13410): Pin "clk_out_divisor" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 5 registers lost all their fanouts during netlist optimizations.
+Info (17049): 13 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 135 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 9 input pins
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "FRONT_SENSOR_PEAJE"
+    Warning (15610): No output dependent on input pin "BACK_SENSOR_PEAJE"
+Info (21057): Implemented 132 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 11 input pins
     Info (21059): Implemented 43 output pins
-    Info (21061): Implemented 83 logic cells
+    Info (21061): Implemented 78 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 46 warnings
-    Info: Peak virtual memory: 4663 megabytes
-    Info: Processing ended: Wed May 08 15:26:04 2024
+    Info: Peak virtual memory: 4667 megabytes
+    Info: Processing ended: Wed May 08 15:59:43 2024
     Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
 
 

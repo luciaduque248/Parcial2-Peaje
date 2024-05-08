@@ -1,5 +1,4 @@
 |Peaje_electronico
-CLK => Front_sensor:Front_sensor_inst.CLK
 CLK => Id_vehiculo:Id_vehiculo_inst.CLK
 CLK => SemaforoTalanquera:SemaforoTalanquera_inst.Sistema_habilitador
 CLK => Semaforo_salida:Semaforo_salida_inst.Sistema_habilitador
@@ -9,9 +8,21 @@ CLK => Divisor_Frecuencia:Divisor_Frecuencia_inst.CLK_IN
 CLK => Maq_estados:Maq_estados_inst.clk
 REINICIO => Id_vehiculo:Id_vehiculo_inst.REINICIO
 REINICIO => ControlVehicular:ControlVehicular_inst.REINICIO
+REINICIO => Maq_estados:Maq_estados_inst.reset
 DETECTOR_VEHICULO => ControlVehicular:ControlVehicular_inst.DETECTOR_VEHICULO
 ABRIR_TALANQUERA => ControlVehicular:ControlVehicular_inst.ABRIR_TALANQUERA
 IDVALIDA => Id_vehiculo:Id_vehiculo_inst.IDVALIDA
+CATEGORIA_VEHICULO[0] => Calcular_Tarifa:Calcular_Tarifa_inst.CATEGORIA_VEHICULO[0]
+CATEGORIA_VEHICULO[0] => Maq_estados:Maq_estados_inst.cat[0]
+CATEGORIA_VEHICULO[0] => LED_CATEGORIA_0.DATAIN
+CATEGORIA_VEHICULO[1] => Calcular_Tarifa:Calcular_Tarifa_inst.CATEGORIA_VEHICULO[1]
+CATEGORIA_VEHICULO[1] => Maq_estados:Maq_estados_inst.cat[1]
+CATEGORIA_VEHICULO[1] => LED_CATEGORIA_1.DATAIN
+CATEGORIA_VEHICULO[2] => Calcular_Tarifa:Calcular_Tarifa_inst.CATEGORIA_VEHICULO[2]
+CATEGORIA_VEHICULO[2] => Maq_estados:Maq_estados_inst.cat[2]
+CATEGORIA_VEHICULO[2] => LED_CATEGORIA_2.DATAIN
+FRONT_SENSOR_PEAJE => Front_sensor:Front_sensor_inst.CLK
+BACK_SENSOR_PEAJE => Front_sensor:Back_sensor_inst.CLK
 SALIDA_SEMAFORO_VERDE_CONTROL => ControlVehicular:ControlVehicular_inst.SALIDA_SEMAFORO_VERDE
 SALIDA_SEMAFORO_VERDE_CONTROL => SALIDA_SEMAFORO_VERDE_PEAJE.DATAIN
 SALIDA_SEMAFORO_VERDE_PEAJE << SALIDA_SEMAFORO_VERDE_CONTROL.DB_MAX_OUTPUT_PORT_TYPE
@@ -56,16 +67,19 @@ LED_DENEGADO_ROJO <= Id_vehiculo:Id_vehiculo_inst.LED_DENEGADO_ROJO
 LED_CATEGORIA_0 <= CATEGORIA_VEHICULO[0].DB_MAX_OUTPUT_PORT_TYPE
 LED_CATEGORIA_1 <= CATEGORIA_VEHICULO[1].DB_MAX_OUTPUT_PORT_TYPE
 LED_CATEGORIA_2 <= CATEGORIA_VEHICULO[2].DB_MAX_OUTPUT_PORT_TYPE
-CATEGORIA_VEHICULO[0] => Calcular_Tarifa:Calcular_Tarifa_inst.CATEGORIA_VEHICULO[0]
-CATEGORIA_VEHICULO[0] => LED_CATEGORIA_0.DATAIN
-CATEGORIA_VEHICULO[1] => Calcular_Tarifa:Calcular_Tarifa_inst.CATEGORIA_VEHICULO[1]
-CATEGORIA_VEHICULO[1] => LED_CATEGORIA_1.DATAIN
-CATEGORIA_VEHICULO[2] => Calcular_Tarifa:Calcular_Tarifa_inst.CATEGORIA_VEHICULO[2]
-CATEGORIA_VEHICULO[2] => LED_CATEGORIA_2.DATAIN
 clk_out_divisor <= Divisor_Frecuencia:Divisor_Frecuencia_inst.CLK_OUT
 
 
 |Peaje_electronico|Front_sensor:Front_sensor_inst
+CLK => DETECTOR_VEHICULO~reg0.CLK
+CLK => CONTADOR_TIEMPO[0].CLK
+CLK => CONTADOR_TIEMPO[1].CLK
+CLK => CONTADOR_TIEMPO[2].CLK
+CLK => CONTADOR_TIEMPO[3].CLK
+DETECTOR_VEHICULO <= DETECTOR_VEHICULO~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Peaje_electronico|Front_sensor:Back_sensor_inst
 CLK => DETECTOR_VEHICULO~reg0.CLK
 CLK => CONTADOR_TIEMPO[0].CLK
 CLK => CONTADOR_TIEMPO[1].CLK
@@ -436,15 +450,16 @@ CLK_OUT <= <GND>
 
 |Peaje_electronico|Maq_estados:Maq_estados_inst
 clk => current_state~1.DATAIN
-front_sensor => Selector1.IN3
+front_sensor => next_state.identificador.DATAB
 front_sensor => Selector0.IN1
-back_sensor => Selector0.IN4
-back_sensor => Selector3.IN2
-cobrar => Selector3.IN4
+back_sensor => Selector0.IN3
+back_sensor => Selector2.IN1
 cobrar => Selector2.IN3
+cobrar => Selector1.IN2
 reset => current_state~3.DATAIN
-cat[0] => Equal0.IN1
-cat[1] => Equal0.IN0
+cat[0] => ~NO_FANOUT~
+cat[1] => ~NO_FANOUT~
+cat[2] => ~NO_FANOUT~
 id[0] => ~NO_FANOUT~
 id[1] => ~NO_FANOUT~
 id[2] => ~NO_FANOUT~
@@ -455,7 +470,7 @@ led <= <GND>
 sema_ini <= sema_ini.DB_MAX_OUTPUT_PORT_TYPE
 sema_fin <= sema_fin.DB_MAX_OUTPUT_PORT_TYPE
 cont_vehiculo <= cont_vehiculo.DB_MAX_OUTPUT_PORT_TYPE
-contador[0] <= contador[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
-contador[1] <= contador[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
+contador[0] <= <GND>
+contador[1] <= <GND>
 
 

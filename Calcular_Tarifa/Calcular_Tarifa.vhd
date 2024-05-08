@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity Calcular_Tarifa is
     port (
         CLK : in std_logic;                           -- Señal de reloj
-        CATEGORIA_VEHICULO : in unsigned(2 downto 0); -- Categoría del vehículo (3 bits)
+        CATEGORIA_VEHICULO : in std_logic_vector(2 downto 0); -- Categoría del vehículo (3 bits)
         TIEMPO_PASO : in unsigned(15 downto 0);       -- Tiempo de paso del vehículo (16 bits)
         TARIFA : out unsigned(7 downto 0)             -- Tarifa calculada
     );

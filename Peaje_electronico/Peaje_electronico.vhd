@@ -10,6 +10,10 @@ entity Peaje_electronico is
         DETECTOR_VEHICULO : in std_logic;                        -- Señal que indica la detección de un vehículo
         ABRIR_TALANQUERA : in std_logic;                         -- Señal que indica el estado de la barrera manual (1 cerrado, 0 abierto)
         IDVALIDA : in std_logic;                                 -- Señal de identificación válida
+		  CATEGORIA_VEHICULO : in std_logic_vector(2 downto 0);             -- Categoría del vehículo (3 bits)
+		  
+		  FRONT_SENSOR_PEAJE : in std_logic;  
+		  BACK_SENSOR_PEAJE : in std_logic;  
 		  
 		  SALIDA_SEMAFORO_VERDE_CONTROL : in std_logic;            -- Señal de control del semáforo verde
 		  
@@ -31,7 +35,7 @@ entity Peaje_electronico is
         LED_CATEGORIA_0 : out std_logic;                        -- LED para la categoría de vehículo 0
         LED_CATEGORIA_1 : out std_logic;                        -- LED para la categoría de vehículo 1
         LED_CATEGORIA_2 : out std_logic;                        -- LED para la categoría de vehículo 2
-        CATEGORIA_VEHICULO : in unsigned(2 downto 0);             -- Categoría del vehículo (3 bits)
+        
         clk_out_divisor : out std_logic
     );
 end entity Peaje_electronico;
@@ -64,6 +68,9 @@ architecture Peaje_electronico_arch of Peaje_electronico is
     
 	 -- Señal para la tarifa calculada
     signal tarifa_calculada : unsigned(7 downto 0);
+	 
+	 signal ConexionSemaforoSalida: std_logic;
+	 signal ConexionSemaforoEntrada: std_logic;
     
 	 -- Señal de salida del divisor de frecuencia
     --signal clk_out_divisor : std_logic;
@@ -144,7 +151,7 @@ architecture Peaje_electronico_arch of Peaje_electronico is
         port (
             --entrada
             CLK : in std_logic;                           -- Señal de reloj
-            CATEGORIA_VEHICULO : in unsigned(2 downto 0);-- Categoría del vehículo (2 bits)
+            CATEGORIA_VEHICULO : in std_logic_vector(2 downto 0);-- Categoría del vehículo (2 bits)
             TIEMPO_PASO : in unsigned(15 downto 0);       -- Tiempo de paso del vehículo (16 bits)
             --salida
             TARIFA : out unsigned(7 downto 0)             -- Tarifa calculada
@@ -170,7 +177,7 @@ architecture Peaje_electronico_arch of Peaje_electronico is
 	 component Maq_estados is
         port (
             clk, front_sensor, back_sensor, cobrar, reset: in std_logic;
-            cat: in std_logic_vector(1 downto 0);
+            cat: in std_logic_vector(2 downto 0);
             id: in std_logic_vector(2 downto 0);
             tala_ini, tala_fin, alar_son, led, sema_ini, sema_fin, cont_vehiculo: out std_logic;
             contador: buffer integer range 0 to 2
@@ -206,8 +213,13 @@ begin
 	 
     -- Instanciación de los componentes
     Front_sensor_inst : Front_sensor port map (
-        CLK => CLK,
+        CLK => FRONT_SENSOR_PEAJE,
         DETECTOR_VEHICULO => PasoVehicular
+    );
+	 
+	 Back_sensor_inst : Front_sensor port map (
+        CLK => BACK_SENSOR_PEAJE,
+        DETECTOR_VEHICULO => back_sensor_maq
     );
 
     Id_vehiculo_inst : Id_vehiculo port map (
@@ -230,7 +242,7 @@ begin
 
     Semaforo_salida_inst : Semaforo_salida port map (
         Sistema_habilitador => CLK,
-        PasoVehicular => PasoVehicular,
+        PasoVehicular => ConexionSemaforoSalida,
         SemaforoVerde => salidaSemaforoVerde,  -- Corregido
         SemaforoRojo => salidaSemaforoRojo
     );
@@ -274,18 +286,18 @@ begin
 	 -- Instanciación de Maq_estados
     Maq_estados_inst : Maq_estados port map (
         clk => CLK,
-        front_sensor => front_sensor_maq,
+        front_sensor => PasoVehicular,
         back_sensor => back_sensor_maq,
         cobrar => cobrar_maq,
-        reset => reset_maq,
-        cat => cat_maq,
+        reset => REINICIO,
+        cat => CATEGORIA_VEHICULO,
         id => id_maq,
         tala_ini => tala_ini_maq,
         tala_fin => tala_fin_maq,
         alar_son => alar_son_maq,
         led => led_maq,
         sema_ini => sema_ini_maq,
-        sema_fin => sema_fin_maq,
+        sema_fin => ConexionSemaforoSalida,
         cont_vehiculo => cont_vehiculo_maq,
         contador => contador_maq
     );

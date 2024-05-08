@@ -4,7 +4,7 @@ use IEEE.numeric_std.all;
 
 entity Maq_estados is
     port (clk, front_sensor, back_sensor, cobrar, reset: in std_logic;
-        cat: in std_logic_vector(1 downto 0);
+        cat: in std_logic_vector(2 downto 0);
         id: in std_logic_vector(2 downto 0);
         tala_ini, tala_fin, alar_son, led, sema_ini, sema_fin, cont_vehiculo: out std_logic;
         contador: buffer integer range 0 to 2
