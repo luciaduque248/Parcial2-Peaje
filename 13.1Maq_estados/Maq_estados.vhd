@@ -32,7 +32,7 @@ begin
 
     Next_state_logic: process (current_state, x)
     begin
-	  next_state <= current_state; 
+      next_state <= current_state; 
         case current_state is
             when inicio =>
                 if (front_sensor = '1') then
@@ -58,7 +58,7 @@ begin
                     end if;
                 end if;
 
-                if (cat = "00" and contador = 2 ) then
+                if (cat = "00" and contador = 2) then
                     next_state <= salida;
                 elsif (cat /= "00") then
                     x <= '1';
@@ -110,8 +110,11 @@ begin
             when incorrecto =>
                 tala_ini <= '0';
                 sema_ini <= '0';
-					 alar_son <= '1';
-                --if contador = 2 then alar_son <= '1'; --como ponerlo para despues de los 3 intentos 
+                     alar_son <= '1';
+                --if contador = 2 then alar_son <= '1'; --como ponerlo para despues de los 3 intentos y de la misma manera que se apagen los leds en cada intento
+                    -- si es de aplicarle una funcion para el contador de intentos( para que la alarma se active al 3 inteto) como se hace?
+                    
+                    
 
             when cobro =>
                 tala_ini <= '0';

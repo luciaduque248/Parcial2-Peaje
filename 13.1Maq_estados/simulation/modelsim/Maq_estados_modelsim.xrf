@@ -1,10 +1,10 @@
 vendor_name = ModelSim
-source_file = 1, C:/Users/1KPQ2L3/Downloads/13.1Maq_estados/Maq_estados.vhd
-source_file = 1, C:/Users/1KPQ2L3/Downloads/13.1Maq_estados/db/Maq_estados.cbx.xml
-source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
-source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
-source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_b.vhd
-source_file = 1, c:/altera/13.1/quartus/libraries/vhdl/ieee/timing_p.vhd
+source_file = 1, C:/Users/DELL/Documents/VHDL/PARCIAL2-GRUPAL/13.1Maq_estados/Maq_estados.vhd
+source_file = 1, C:/Users/DELL/Documents/VHDL/PARCIAL2-GRUPAL/13.1Maq_estados/db/Maq_estados.cbx.xml
+source_file = 1, c:/users/dell/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
+source_file = 1, c:/users/dell/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
+source_file = 1, c:/users/dell/quartus/libraries/vhdl/ieee/timing_b.vhd
+source_file = 1, c:/users/dell/quartus/libraries/vhdl/ieee/timing_p.vhd
 design_name = Maq_estados
 instance = comp, \tala_ini~output\, tala_ini~output, Maq_estados, 1
 instance = comp, \tala_fin~output\, tala_fin~output, Maq_estados, 1
