@@ -36,6 +36,11 @@ entity Peaje_electronico is
         LED_CATEGORIA_0 : out std_logic;                        -- LED para la categoría de vehículo 0
         LED_CATEGORIA_1 : out std_logic;                        -- LED para la categoría de vehículo 1
         LED_CATEGORIA_2 : out std_logic;                        -- LED para la categoría de vehículo 2
+		  
+		  Servo_Talanquera_inicial : out std_logic;   
+		  Servo_Talanquera_final : out std_logic;   
+		  
+		  datos_Salida_arduino: out std_logic_vector(7 downto 0);   
         
         clk_out_divisor : out std_logic
     );
@@ -75,6 +80,8 @@ architecture Peaje_electronico_arch of Peaje_electronico is
 	 
 	 signal tala_ini_maq : std_logic;  -- Señal de salida de la máquina de estados para la talanquera inicial
     signal tala_fin_maq : std_logic;  -- Señal de salida de la máquina de estados para la talanquera final
+	 
+	 
     
 	 -- Señal de salida del divisor de frecuencia
     --signal clk_out_divisor : std_logic;
@@ -209,6 +216,19 @@ architecture Peaje_electronico_arch of Peaje_electronico is
         );
     end component;
 	 
+	 component LCDArduino is
+        port ( 
+            clk : in std_logic;
+            reset : in std_logic;
+            estado : in std_logic_vector(3 downto 0);                
+            categoria_vehiculo : in std_logic_vector(2 downto 0);    
+            tiempo_vehiculo : in std_logic_vector(15 downto 0);      
+            tarifa_peaje : in std_logic_vector(7 downto 0);          
+            datos_lcd : out std_logic_vector(7 downto 0);            
+            habilitador_lcd : in std_logic                          
+        );
+    end component;
+	 
 begin
 
 	 -- Asignaciones de LEDs para las categorías de vehículos
@@ -294,10 +314,17 @@ begin
 		  
 		  
 	-- Instanciar PWM
-    PWM_inst : PWM port map (
+    PWM_Entrada_inst : PWM port map (
         CLK => CLK,
         talanquera => tala_ini_maq,
-        actuadorTalanquera => manualBarrier
+        actuadorTalanquera => Servo_Talanquera_inicial
+    );
+	 
+	 -- Instanciar PWM
+    PWM_Final_inst : PWM port map (
+        CLK => CLK,
+        talanquera => tala_fin_maq,
+        actuadorTalanquera => Servo_Talanquera_final
     );
 	
 	-------------------------------------- Maquina De Estados ------------------------------------------------------------------------
@@ -312,7 +339,7 @@ begin
         reset => REINICIO,
         cat => CATEGORIA_VEHICULO,
         id => ID_PEAJE,
-        tala_ini => manualBarrier,
+        tala_ini => tala_ini_maq,
         tala_fin => tala_fin_maq,
         alar_son => alar_son_maq,
         led => led_maq,
@@ -320,6 +347,18 @@ begin
         sema_fin => ConexionSemaforoSalida,
         cont_vehiculo => cont_vehiculo_maq,
         contador => contador_maq
+    );
+	 
+	 -- Instanciar LCDArduino
+    LCDArduino_inst : LCDArduino port map (
+        clk => CLK,
+        reset => REINICIO,
+        estado => "0000",                
+        categoria_vehiculo => CATEGORIA_VEHICULO,    
+        tiempo_vehiculo => std_logic_vector(tiempo_paso_int),  -- Convertir a std_logic_vector
+		 tarifa_peaje => std_logic_vector(tarifa_calculada),    -- Convertir a std_logic_vector       
+        datos_lcd => datos_Salida_arduino,            
+        habilitador_lcd => SALIDA_SEMAFORO_VERDE_CONTROL
     );
 
 
