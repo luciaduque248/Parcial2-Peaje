@@ -1,6 +1,5 @@
 |Peaje_electronico
 CLK => Id_vehiculo:Id_vehiculo_inst.CLK
-CLK => SemaforoTalanquera:SemaforoTalanquera_inst.Sistema_habilitador
 CLK => Semaforo_salida:Semaforo_salida_inst.Sistema_habilitador
 CLK => ControlVehicular:ControlVehicular_inst.CLK
 CLK => Calcular_Tarifa:Calcular_Tarifa_inst.CLK

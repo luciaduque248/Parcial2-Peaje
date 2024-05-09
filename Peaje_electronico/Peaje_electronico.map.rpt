@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Peaje_electronico
-Wed May 08 19:16:16 2024
+Wed May 08 19:24:41 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -48,7 +48,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed May 08 19:16:16 2024      ;
+; Analysis & Synthesis Status        ; Successful - Wed May 08 19:24:41 2024      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; Peaje_electronico                          ;
 ; Top-level Entity Name              ; Peaje_electronico                          ;
@@ -161,11 +161,12 @@ applicable agreement for further details.
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 2           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-8         ;   0.0%      ;
+;     Processor 2            ; < 0.1%      ;
+;     Processors 3-8         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -211,7 +212,7 @@ applicable agreement for further details.
 ; I/O pins                                    ; 57        ;
 ; Embedded Multiplier 9-bit elements          ; 0         ;
 ; Maximum fan-out node                        ; CLK~input ;
-; Maximum fan-out                             ; 88        ;
+; Maximum fan-out                             ; 85        ;
 ; Total fan-out                               ; 689       ;
 ; Average fan-out                             ; 2.35      ;
 +---------------------------------------------+-----------+
@@ -268,9 +269,9 @@ Encoding Type:  One-Hot
 ; Latch Name                                                         ; Latch Enable Signal                               ; Free of Timing Hazards ;
 +--------------------------------------------------------------------+---------------------------------------------------+------------------------+
 ; Semaforo_salida:Semaforo_salida_inst|Estado                        ; CLK                                               ; yes                    ;
-; SemaforoTalanquera:SemaforoTalanquera_inst|SemaforoRojoTalanquera  ; CLK                                               ; yes                    ;
-; SemaforoTalanquera:SemaforoTalanquera_inst|SemaforoVerdeTalanquera ; CLK                                               ; yes                    ;
-; SemaforoTalanquera:SemaforoTalanquera_inst|talanquera              ; CLK                                               ; yes                    ;
+; SemaforoTalanquera:SemaforoTalanquera_inst|SemaforoRojoTalanquera  ; Maq_estados:Maq_estados_inst|current_state.inicio ; yes                    ;
+; SemaforoTalanquera:SemaforoTalanquera_inst|SemaforoVerdeTalanquera ; Maq_estados:Maq_estados_inst|current_state.inicio ; yes                    ;
+; SemaforoTalanquera:SemaforoTalanquera_inst|talanquera              ; Maq_estados:Maq_estados_inst|current_state.inicio ; yes                    ;
 ; SemaforoTalanquera:SemaforoTalanquera_inst|Estado                  ; SemaforoTalanquera:SemaforoTalanquera_inst|Estado ; yes                    ;
 ; Number of user-specified and inferred latches = 5                  ;                                                   ;                        ;
 +--------------------------------------------------------------------+---------------------------------------------------+------------------------+
@@ -334,7 +335,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; tala_fin      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; alar_son      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; led           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; sema_ini      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; cont_vehiculo ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; contador      ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -355,7 +355,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Wed May 08 19:16:15 2024
+    Info: Processing started: Wed May 08 19:24:40 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Peaje_electronico -c Peaje_electronico
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (12021): Found 2 design units, including 1 entities, in source file /users/dell/documents/vhdl/parcial2-grupal/13.1maq_estados/maq_estados.vhd
@@ -396,7 +396,6 @@ Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(194): obje
 Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(194): object "tala_fin_maq" assigned a value but never read
 Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(194): object "alar_son_maq" assigned a value but never read
 Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(194): object "led_maq" assigned a value but never read
-Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(194): object "sema_ini_maq" assigned a value but never read
 Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(194): object "cont_vehiculo_maq" assigned a value but never read
 Warning (10036): Verilog HDL or VHDL warning at Peaje_electronico.vhd(195): object "contador_maq" assigned a value but never read
 Info (12128): Elaborating entity "Front_sensor" for hierarchy "Front_sensor:Front_sensor_inst"
@@ -467,9 +466,9 @@ Info (21057): Implemented 176 device resources after synthesis - the final resou
     Info (21058): Implemented 14 input pins
     Info (21059): Implemented 43 output pins
     Info (21061): Implemented 119 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 37 warnings
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 36 warnings
     Info: Peak virtual memory: 4663 megabytes
-    Info: Processing ended: Wed May 08 19:16:16 2024
+    Info: Processing ended: Wed May 08 19:24:41 2024
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

@@ -233,7 +233,7 @@ begin
     );
 
     SemaforoTalanquera_inst : SemaforoTalanquera port map (
-        Sistema_habilitador => CLK,
+        Sistema_habilitador => ConexionSemaforoEntrada,
         EstadoTalanquera => ABRIR_TALANQUERA_INTERNAL,
         SemaforoRojoTalanquera => SemaforoRojoPeaje,
         SemaforoVerdeTalanquera => SemaforoVerdePeaje,
@@ -296,7 +296,7 @@ begin
         tala_fin => tala_fin_maq,
         alar_son => alar_son_maq,
         led => led_maq,
-        sema_ini => sema_ini_maq,
+        sema_ini => ConexionSemaforoEntrada,
         sema_fin => ConexionSemaforoSalida,
         cont_vehiculo => cont_vehiculo_maq,
         contador => contador_maq
