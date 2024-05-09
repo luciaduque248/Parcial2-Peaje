@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for Peaje_electronico
-Thu May 09 16:09:39 2024
+Thu May 09 17:05:13 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -1820,6 +1820,7 @@ No paths to report.
 ; -0.566 ; PWM:PWM_Entrada_inst|counter[7]                                ; PWM:PWM_Entrada_inst|counter[28]                                    ; CLK          ; CLK         ; 1.000        ; -0.038     ; 1.515      ;
 ; -0.564 ; PWM:PWM_Final_inst|counter[3]                                  ; PWM:PWM_Final_inst|counter[30]                                      ; CLK          ; CLK         ; 1.000        ; 0.152      ; 1.703      ;
 ; -0.563 ; PWM:PWM_Entrada_inst|counter[5]                                ; PWM:PWM_Entrada_inst|counter[26]                                    ; CLK          ; CLK         ; 1.000        ; -0.038     ; 1.512      ;
+; -0.558 ; PWM:PWM_Final_inst|counter[2]                                  ; PWM:PWM_Final_inst|counter[31]                                      ; CLK          ; CLK         ; 1.000        ; 0.152      ; 1.697      ;
 ; -0.558 ; ControlVehicular:ControlVehicular_inst|TIEMPO_PASOVEHICULO[14] ; ControlVehicular:ControlVehicular_inst|REGISTRO_TIEMPOVEHICULAR[15] ; CLK          ; CLK         ; 1.000        ; -0.035     ; 1.510      ;
 ; -0.558 ; ControlVehicular:ControlVehicular_inst|TIEMPO_PASOVEHICULO[14] ; ControlVehicular:ControlVehicular_inst|REGISTRO_TIEMPOVEHICULAR[2]  ; CLK          ; CLK         ; 1.000        ; -0.035     ; 1.510      ;
 ; -0.558 ; ControlVehicular:ControlVehicular_inst|TIEMPO_PASOVEHICULO[14] ; ControlVehicular:ControlVehicular_inst|REGISTRO_TIEMPOVEHICULAR[0]  ; CLK          ; CLK         ; 1.000        ; -0.035     ; 1.510      ;
@@ -1839,7 +1840,6 @@ No paths to report.
 ; -0.558 ; ControlVehicular:ControlVehicular_inst|TIEMPO_PASOVEHICULO[14] ; ControlVehicular:ControlVehicular_inst|TIEMPOTALANQUERA_CERRADA[2]  ; CLK          ; CLK         ; 1.000        ; 0.139      ; 1.684      ;
 ; -0.558 ; ControlVehicular:ControlVehicular_inst|TIEMPO_PASOVEHICULO[14] ; ControlVehicular:ControlVehicular_inst|TIEMPOTALANQUERA_CERRADA[3]  ; CLK          ; CLK         ; 1.000        ; 0.139      ; 1.684      ;
 ; -0.558 ; ControlVehicular:ControlVehicular_inst|TIEMPO_PASOVEHICULO[14] ; ControlVehicular:ControlVehicular_inst|TIEMPOTALANQUERA_CERRADA[4]  ; CLK          ; CLK         ; 1.000        ; 0.139      ; 1.684      ;
-; -0.558 ; ControlVehicular:ControlVehicular_inst|TIEMPO_PASOVEHICULO[14] ; ControlVehicular:ControlVehicular_inst|TIEMPOTALANQUERA_CERRADA[5]  ; CLK          ; CLK         ; 1.000        ; 0.139      ; 1.684      ;
 +--------+----------------------------------------------------------------+---------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
 
 
@@ -2890,7 +2890,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu May 09 16:09:37 2024
+    Info: Processing started: Thu May 09 17:05:12 2024
 Info: Command: quartus_sta Peaje_electronico -c Peaje_electronico
 Info: qsta_default_script.tcl version: #1
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
@@ -2992,9 +2992,9 @@ Info (332146): Worst-case minimum pulse width slack is -3.000
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 4683 megabytes
-    Info: Processing ended: Thu May 09 16:09:39 2024
-    Info: Elapsed time: 00:00:02
+    Info: Peak virtual memory: 4688 megabytes
+    Info: Processing ended: Thu May 09 17:05:13 2024
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 
 

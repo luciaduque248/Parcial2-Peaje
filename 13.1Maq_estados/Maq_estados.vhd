@@ -3,10 +3,12 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 entity Maq_estados is
-    port (clk, front_sensor, back_sensor, cobrar, reset: in std_logic;
+    port (
+        clk, front_sensor, back_sensor, cobrar, reset: in std_logic;
         cat: in std_logic_vector(2 downto 0);
         id: in std_logic_vector(2 downto 0);
-        tala_ini, tala_fin, alar_son, led, sema_ini, sema_fin, cont_vehiculo: out std_logic;
+        tala_ini, tala_fin, alar_son, led, sema_ini, sema_fin: out std_logic;
+        cont_vehiculo: buffer std_logic_vector(7 downto 0);
         contador: buffer integer range 0 to 2
     );
 end Maq_estados;
@@ -95,13 +97,13 @@ begin
         led <= '0';
         sema_ini <= '0';
         sema_fin <= '0';
-        cont_vehiculo <= '0';
+        cont_vehiculo <= (others => '0'); -- Inicializar el contador de vehículos
 
         case current_state is
             when inicio =>
                 tala_ini <= '1';
                 sema_ini <= '1';
-                cont_vehiculo <= '0'; --como le pongo para que siga sumando
+                cont_vehiculo <= std_logic_vector(unsigned(cont_vehiculo) + 1); -- Incrementar el contador de vehículos
 
             when identificador =>
                 tala_ini <= '0';
@@ -110,12 +112,8 @@ begin
             when incorrecto =>
                 tala_ini <= '0';
                 sema_ini <= '0';
-                     alar_son <= '1';
-                --if contador = 2 then alar_son <= '1'; --como ponerlo para despues de los 3 intentos y de la misma manera que se apagen los leds en cada intento
-                    -- si es de aplicarle una funcion para el contador de intentos( para que la alarma se active al 3 inteto) como se hace?
-                    
-                    
-
+                alar_son <= '1';
+                
             when cobro =>
                 tala_ini <= '0';
                 sema_ini <= '0';
@@ -123,7 +121,6 @@ begin
             when salida =>
                 sema_fin <= '1';
                 tala_fin <= '1';
-                cont_vehiculo <= '1';
         end case;
     end process;
 end arch_Maq_estados;

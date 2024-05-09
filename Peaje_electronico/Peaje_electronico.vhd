@@ -186,12 +186,13 @@ architecture Peaje_electronico_arch of Peaje_electronico is
 	 -- Componente de la Maquina De Estados
 	 component Maq_estados is
         port (
-            clk, front_sensor, back_sensor, cobrar, reset: in std_logic;
-            cat: in std_logic_vector(2 downto 0);
-            id: in std_logic_vector(2 downto 0);
-            tala_ini, tala_fin, alar_son, led, sema_ini, sema_fin, cont_vehiculo: out std_logic;
-            contador: buffer integer range 0 to 2
-        );
+			  clk, front_sensor, back_sensor, cobrar, reset: in std_logic;
+			  cat: in std_logic_vector(2 downto 0);
+			  id: in std_logic_vector(2 downto 0);
+			  tala_ini, tala_fin, alar_son, led, sema_ini, sema_fin: out std_logic;
+			  cont_vehiculo: buffer std_logic_vector(7 downto 0);
+			  contador: buffer integer range 0 to 2
+		);
     end component;
 	 
 	 -- Señales para conectar Maq_estados
@@ -201,7 +202,8 @@ architecture Peaje_electronico_arch of Peaje_electronico is
     signal reset_maq : std_logic;
     signal cat_maq : std_logic_vector(1 downto 0);
     signal id_maq : std_logic_vector(2 downto 0);
-    signal alar_son_maq, led_maq, sema_ini_maq, sema_fin_maq, cont_vehiculo_maq : std_logic;
+    signal alar_son_maq, led_maq, sema_ini_maq, sema_fin_maq: std_logic;
+	 signal cont_vehiculo_maq :  std_logic_vector(7 downto 0);
     signal contador_maq : integer range 0 to 2;
 	 
 	 --------------------------------------------------------------------------------------------------------------------------------------
