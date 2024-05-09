@@ -86,6 +86,7 @@ set_location_assignment PIN_F1 -to CATEGORIA_VEHICULO[2]
 set_location_assignment PIN_B1 -to LED_CATEGORIA_0
 set_location_assignment PIN_B2 -to LED_CATEGORIA_1
 set_location_assignment PIN_C2 -to LED_CATEGORIA_2
+set_global_assignment -name VHDL_FILE ../PWM_SERVOMOTORES/PWM.vhd
 set_global_assignment -name VHDL_FILE ../13.1Maq_estados/Maq_estados.vhd
 set_global_assignment -name VHDL_FILE ../track_sensor/track_sensor.vhd
 set_global_assignment -name VHDL_FILE ../Semaforo_salida/Semaforo_salida.vhd

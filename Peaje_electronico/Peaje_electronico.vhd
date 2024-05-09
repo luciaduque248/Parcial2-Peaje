@@ -29,7 +29,7 @@ entity Peaje_electronico is
         TALANQUERA_CERRADA_TIEMPO  : out unsigned(15 downto 0);  -- Tiempo en que se cerró la barrera
         SemaforoRojoPeaje : out std_logic;                            -- Semáforo de entrada rojo
         SemaforoVerdePeaje : out std_logic;                           -- Semáforo de entrada verde
-        manualBarrier  : out std_logic;                             -- Barrera de entrada
+        --manualBarrier  : out std_logic;                             -- Barrera de salida
         LED_AUTORIZADO_VERDE : out std_logic;                    -- LED verde para indicar identificación válida
         LED_DENEGADO_ROJO : out std_logic;                       -- LED rojo para indicar identificación inválida
 		
@@ -47,7 +47,7 @@ architecture Peaje_electronico_arch of Peaje_electronico is
     -- Declaración de señales internas
     signal vehiclePassed : std_logic;
 	 
-    --signal manualBarrier : std_logic;   -- Señal para indicar el estado de la barrera manual
+    signal manualBarrier : std_logic;   -- Señal para indicar el estado de la barrera manual
     signal semaphoreGreen : std_logic;  -- Señal para indicar el estado verde del semáforo
     signal PasoVehicular : std_logic;   -- Señal para indicar el paso de un vehículo
 	 
@@ -72,6 +72,9 @@ architecture Peaje_electronico_arch of Peaje_electronico is
 	 
 	 signal ConexionSemaforoSalida: std_logic;
 	 signal ConexionSemaforoEntrada: std_logic;
+	 
+	 signal tala_ini_maq : std_logic;  -- Señal de salida de la máquina de estados para la talanquera inicial
+    signal tala_fin_maq : std_logic;  -- Señal de salida de la máquina de estados para la talanquera final
     
 	 -- Señal de salida del divisor de frecuencia
     --signal clk_out_divisor : std_logic;
@@ -191,12 +194,21 @@ architecture Peaje_electronico_arch of Peaje_electronico is
     signal reset_maq : std_logic;
     signal cat_maq : std_logic_vector(1 downto 0);
     signal id_maq : std_logic_vector(2 downto 0);
-    signal tala_ini_maq, tala_fin_maq, alar_son_maq, led_maq, sema_ini_maq, sema_fin_maq, cont_vehiculo_maq : std_logic;
+    signal alar_son_maq, led_maq, sema_ini_maq, sema_fin_maq, cont_vehiculo_maq : std_logic;
     signal contador_maq : integer range 0 to 2;
 	 
 	 --------------------------------------------------------------------------------------------------------------------------------------
 	 --------------------------------------------------------------------------------------------------------------------------------------
 
+	 -- Componente PWM
+    component PWM is
+        port (
+            CLK : in std_logic;
+            talanquera : in std_logic;
+            actuadorTalanquera : out std_logic
+        );
+    end component;
+	 
 begin
 
 	 -- Asignaciones de LEDs para las categorías de vehículos
@@ -279,6 +291,14 @@ begin
             CLK_IN => CLK,                     -- Conectar la señal de reloj de entrada
             CLK_OUT => clk_out_divisor  -- Conectar la señal de reloj dividida
         );
+		  
+		  
+	-- Instanciar PWM
+    PWM_inst : PWM port map (
+        CLK => CLK,
+        talanquera => tala_ini_maq,
+        actuadorTalanquera => manualBarrier
+    );
 	
 	-------------------------------------- Maquina De Estados ------------------------------------------------------------------------
 	----------------------------------------------------------------------------------------------------------------------------------
@@ -292,7 +312,7 @@ begin
         reset => REINICIO,
         cat => CATEGORIA_VEHICULO,
         id => ID_PEAJE,
-        tala_ini => tala_ini_maq,
+        tala_ini => manualBarrier,
         tala_fin => tala_fin_maq,
         alar_son => alar_son_maq,
         led => led_maq,

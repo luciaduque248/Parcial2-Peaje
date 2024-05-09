@@ -3,35 +3,35 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'CLK'
-Slack : -2.254
-TNS   : -126.582
+Slack : -1.887
+TNS   : -121.854
 
 Type  : Slow 1200mV 85C Model Setup 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : -1.051
-TNS   : -1.062
-
-Type  : Slow 1200mV 85C Model Setup 'FRONT_SENSOR_PEAJE'
-Slack : -0.086
-TNS   : -0.307
+Slack : -1.199
+TNS   : -1.575
 
 Type  : Slow 1200mV 85C Model Setup 'BACK_SENSOR_PEAJE'
-Slack : -0.079
-TNS   : -0.287
+Slack : -0.089
+TNS   : -0.256
+
+Type  : Slow 1200mV 85C Model Setup 'FRONT_SENSOR_PEAJE'
+Slack : -0.074
+TNS   : -0.273
 
 Type  : Slow 1200mV 85C Model Hold 'CLK'
-Slack : -0.113
-TNS   : -0.113
+Slack : -0.055
+TNS   : -0.091
 
 Type  : Slow 1200mV 85C Model Hold 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : 0.042
+Slack : 0.180
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'BACK_SENSOR_PEAJE'
+Slack : 0.358
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'FRONT_SENSOR_PEAJE'
 Slack : 0.358
-TNS   : 0.000
-
-Type  : Slow 1200mV 85C Model Hold 'BACK_SENSOR_PEAJE'
-Slack : 0.359
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLK'
@@ -47,38 +47,38 @@ Slack : -3.000
 TNS   : -7.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : 0.414
+Slack : 0.401
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'CLK'
-Slack : -1.966
-TNS   : -107.468
+Slack : -1.627
+TNS   : -103.021
 
 Type  : Slow 1200mV 0C Model Setup 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : -0.842
-TNS   : -0.842
-
-Type  : Slow 1200mV 0C Model Setup 'FRONT_SENSOR_PEAJE'
-Slack : 0.034
-TNS   : 0.000
+Slack : -0.990
+TNS   : -1.222
 
 Type  : Slow 1200mV 0C Model Setup 'BACK_SENSOR_PEAJE'
-Slack : 0.042
+Slack : 0.035
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'FRONT_SENSOR_PEAJE'
+Slack : 0.039
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'CLK'
-Slack : -0.107
-TNS   : -0.107
+Slack : -0.072
+TNS   : -0.119
 
 Type  : Slow 1200mV 0C Model Hold 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : 0.089
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Hold 'FRONT_SENSOR_PEAJE'
-Slack : 0.312
+Slack : 0.218
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'BACK_SENSOR_PEAJE'
+Slack : 0.312
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'FRONT_SENSOR_PEAJE'
 Slack : 0.313
 TNS   : 0.000
 
@@ -95,35 +95,35 @@ Slack : -3.000
 TNS   : -7.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : 0.444
+Slack : 0.447
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'CLK'
-Slack : -0.788
-TNS   : -35.464
+Slack : -0.595
+TNS   : -33.872
 
 Type  : Fast 1200mV 0C Model Setup 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : -0.216
-TNS   : -0.216
+Slack : -0.278
+TNS   : -0.278
+
+Type  : Fast 1200mV 0C Model Setup 'BACK_SENSOR_PEAJE'
+Slack : 0.392
+TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'FRONT_SENSOR_PEAJE'
 Slack : 0.394
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Setup 'BACK_SENSOR_PEAJE'
-Slack : 0.397
-TNS   : 0.000
-
 Type  : Fast 1200mV 0C Model Hold 'CLK'
-Slack : -0.152
-TNS   : -0.206
+Slack : -0.104
+TNS   : -0.207
 
 Type  : Fast 1200mV 0C Model Hold 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : -0.050
-TNS   : -0.092
+Slack : 0.054
+TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'BACK_SENSOR_PEAJE'
-Slack : 0.188
+Slack : 0.187
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'FRONT_SENSOR_PEAJE'
@@ -132,18 +132,18 @@ TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLK'
 Slack : -3.000
-TNS   : -92.313
+TNS   : -92.156
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'FRONT_SENSOR_PEAJE'
 Slack : -3.000
-TNS   : -7.236
+TNS   : -7.228
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'BACK_SENSOR_PEAJE'
 Slack : -3.000
-TNS   : -7.228
+TNS   : -7.224
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : 0.364
+Slack : 0.354
 TNS   : 0.000
 
 ------------------------------------------------------------
