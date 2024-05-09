@@ -4,42 +4,42 @@ K3
 cModel Technology
 Z0 dC:\Users\DELL\Documents\VHDL\PARCIAL2-GRUPAL
 Emaq_estados
-Z1 w1715046909
+Z1 w1715291985
 Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
 Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
 Z4 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
 Z5 dC:\Users\DELL\Documents\VHDL\PARCIAL2-GRUPAL
-Z6 8C:/Users/DELL/Documents/VHDL/PARCIAL2-GRUPAL/13.1Maq_estados/Maq_estados.vhd
-Z7 FC:/Users/DELL/Documents/VHDL/PARCIAL2-GRUPAL/13.1Maq_estados/Maq_estados.vhd
+Z6 8C:\Users\DELL\Documents\VHDL\PARCIAL2-GRUPAL\13.1Maq_estados\Maq_estados.vhd
+Z7 FC:\Users\DELL\Documents\VHDL\PARCIAL2-GRUPAL\13.1Maq_estados\Maq_estados.vhd
 l0
 L5
-V<WmGakcVA<FGJk@Ef>LD73
+VZ07aS76ZKoc:Xn:e^f[i@3
+!s100 ^zzFOKK3K`m:S8G0;ef^O2
 Z8 OV;C;10.1d;51
 32
-Z9 !s108 1715177010.063000
-Z10 !s90 -reportprogress|300|-work|MaquinaDeEstadosPrueba2TBMaquinaDeEstadosPrueba2TB|-2002|-explicit|C:/Users/DELL/Documents/VHDL/PARCIAL2-GRUPAL/13.1Maq_estados/Maq_estados.vhd|
-Z11 !s107 C:/Users/DELL/Documents/VHDL/PARCIAL2-GRUPAL/13.1Maq_estados/Maq_estados.vhd|
+!i10b 1
+Z9 !s108 1715294888.746000
+Z10 !s90 -reportprogress|300|-work|MaquinaDeEstadosPrueba2TBMaquinaDeEstadosPrueba2TB|-2002|-explicit|C:\Users\DELL\Documents\VHDL\PARCIAL2-GRUPAL\13.1Maq_estados\Maq_estados.vhd|
+Z11 !s107 C:\Users\DELL\Documents\VHDL\PARCIAL2-GRUPAL\13.1Maq_estados\Maq_estados.vhd|
 Z12 o-work MaquinaDeEstadosPrueba2TBMaquinaDeEstadosPrueba2TB -2002 -explicit -O0
 Z13 tExplicit 1
-!s100 jCBaESR35@>^A<FIz3Ng01
-!i10b 1
 Aarch_maq_estados
 R2
 R3
 R4
-DEx4 work 11 maq_estados 0 22 <WmGakcVA<FGJk@Ef>LD73
-l23
-L14
-Vd@P2:6=P?=OTNR91>Q_Yg0
+DEx4 work 11 maq_estados 0 22 Z07aS76ZKoc:Xn:e^f[i@3
+l25
+L16
+VH=?Lh^=Z;P`l5fbdaK6o31
+!s100 g5cBH?>Uh^6TfcHFmRSI_1
 R8
 32
+!i10b 1
 R9
 R10
 R11
 R12
 R13
-!s100 SLR]L19OTVc=7`jii<Szl0
-!i10b 1
 Emaqestados_testbench2
 Z14 w1715176935
 R2
@@ -51,15 +51,15 @@ Z16 FC:/Users/DELL/Documents/VHDL/PARCIAL2-GRUPAL/13.1Maq_estados_testbench/MaqE
 l0
 L5
 Vg9U8;FgBBNH3>g^G=1ziV2
-!s100 4OV`WY?GQg_EFkdb;[0bK0
 R8
 32
-!i10b 1
 Z17 !s108 1715177016.557000
 Z18 !s90 -reportprogress|300|-work|MaquinaDeEstadosPrueba2TBMaquinaDeEstadosPrueba2TB|-2002|-explicit|C:/Users/DELL/Documents/VHDL/PARCIAL2-GRUPAL/13.1Maq_estados_testbench/MaqEstados_testbench2.vhd|
 Z19 !s107 C:/Users/DELL/Documents/VHDL/PARCIAL2-GRUPAL/13.1Maq_estados_testbench/MaqEstados_testbench2.vhd|
 R12
 R13
+!s100 4OV`WY?GQg_EFkdb;[0bK0
+!i10b 1
 Amaqestados_tb_arch
 R2
 R3
@@ -68,12 +68,12 @@ DEx4 work 21 maqestados_testbench2 0 22 g9U8;FgBBNH3>g^G=1ziV2
 l28
 L8
 VfG4YzY5>ESMb3mGV:=[j;3
-!s100 9GbkhZl7c8S>C2332C8V32
 R8
 32
-!i10b 1
 R17
 R18
 R19
 R12
 R13
+!s100 9GbkhZl7c8S>C2332C8V32
+!i10b 1

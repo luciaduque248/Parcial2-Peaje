@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 13.1.0 Build 162 10/23/2013 SJ Web Edition"
 
--- DATE "05/09/2024 15:11:42"
+-- DATE "05/09/2024 17:44:29"
 
 -- 
 -- Device: Altera EP3C16F484C6 Package FBGA484
@@ -37,14 +37,14 @@ ENTITY 	PWM IS
     PORT (
 	CLK : IN std_logic;
 	talanquera : IN std_logic;
-	actuadorTalanquera : OUT std_logic
+	actuadorTalanquera : BUFFER std_logic
 	);
 END PWM;
 
 -- Design Ports Information
--- actuadorTalanquera	=>  Location: PIN_M3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- actuadorTalanquera	=>  Location: PIN_AB15,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- CLK	=>  Location: PIN_G2,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- talanquera	=>  Location: PIN_N1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- talanquera	=>  Location: PIN_D2,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
 ARCHITECTURE structure OF PWM IS
@@ -153,7 +153,7 @@ ww_devpor <= devpor;
 
 \CLK~inputclkctrl_INCLK_bus\ <= (vcc & vcc & vcc & \CLK~input_o\);
 
--- Location: IOOBUF_X0_Y12_N9
+-- Location: IOOBUF_X26_Y0_N9
 \actuadorTalanquera~output\ : cycloneiii_io_obuf
 -- pragma translate_off
 GENERIC MAP (
@@ -189,7 +189,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	outclk => \CLK~inputclkctrl_outclk\);
 
--- Location: LCCOMB_X2_Y13_N0
+-- Location: LCCOMB_X22_Y24_N0
 \counter[0]~32\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[0]~32_combout\ = counter(0) $ (VCC)
@@ -206,7 +206,7 @@ PORT MAP (
 	combout => \counter[0]~32_combout\,
 	cout => \counter[0]~33\);
 
--- Location: IOIBUF_X0_Y12_N22
+-- Location: IOIBUF_X0_Y25_N1
 \talanquera~input\ : cycloneiii_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
@@ -217,7 +217,7 @@ PORT MAP (
 	i => ww_talanquera,
 	o => \talanquera~input_o\);
 
--- Location: FF_X2_Y13_N1
+-- Location: FF_X22_Y24_N1
 \counter[0]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -232,7 +232,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(0));
 
--- Location: LCCOMB_X2_Y13_N2
+-- Location: LCCOMB_X22_Y24_N2
 \counter[1]~34\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[1]~34_combout\ = (counter(1) & (!\counter[0]~33\)) # (!counter(1) & ((\counter[0]~33\) # (GND)))
@@ -250,7 +250,7 @@ PORT MAP (
 	combout => \counter[1]~34_combout\,
 	cout => \counter[1]~35\);
 
--- Location: FF_X2_Y13_N3
+-- Location: FF_X22_Y24_N3
 \counter[1]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -265,7 +265,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(1));
 
--- Location: LCCOMB_X2_Y13_N4
+-- Location: LCCOMB_X22_Y24_N4
 \counter[2]~36\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[2]~36_combout\ = (counter(2) & (\counter[1]~35\ $ (GND))) # (!counter(2) & (!\counter[1]~35\ & VCC))
@@ -283,7 +283,7 @@ PORT MAP (
 	combout => \counter[2]~36_combout\,
 	cout => \counter[2]~37\);
 
--- Location: FF_X2_Y13_N5
+-- Location: FF_X22_Y24_N5
 \counter[2]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -298,7 +298,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(2));
 
--- Location: LCCOMB_X2_Y13_N6
+-- Location: LCCOMB_X22_Y24_N6
 \counter[3]~38\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[3]~38_combout\ = (counter(3) & (!\counter[2]~37\)) # (!counter(3) & ((\counter[2]~37\) # (GND)))
@@ -316,7 +316,7 @@ PORT MAP (
 	combout => \counter[3]~38_combout\,
 	cout => \counter[3]~39\);
 
--- Location: FF_X2_Y13_N7
+-- Location: FF_X22_Y24_N7
 \counter[3]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -331,7 +331,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(3));
 
--- Location: LCCOMB_X2_Y13_N8
+-- Location: LCCOMB_X22_Y24_N8
 \counter[4]~40\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[4]~40_combout\ = (counter(4) & (\counter[3]~39\ $ (GND))) # (!counter(4) & (!\counter[3]~39\ & VCC))
@@ -349,7 +349,7 @@ PORT MAP (
 	combout => \counter[4]~40_combout\,
 	cout => \counter[4]~41\);
 
--- Location: FF_X2_Y13_N9
+-- Location: FF_X22_Y24_N9
 \counter[4]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -364,7 +364,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(4));
 
--- Location: LCCOMB_X2_Y13_N10
+-- Location: LCCOMB_X22_Y24_N10
 \counter[5]~42\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[5]~42_combout\ = (counter(5) & (!\counter[4]~41\)) # (!counter(5) & ((\counter[4]~41\) # (GND)))
@@ -382,7 +382,7 @@ PORT MAP (
 	combout => \counter[5]~42_combout\,
 	cout => \counter[5]~43\);
 
--- Location: FF_X2_Y13_N11
+-- Location: FF_X22_Y24_N11
 \counter[5]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -397,7 +397,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(5));
 
--- Location: LCCOMB_X2_Y13_N12
+-- Location: LCCOMB_X22_Y24_N12
 \counter[6]~44\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[6]~44_combout\ = (counter(6) & (\counter[5]~43\ $ (GND))) # (!counter(6) & (!\counter[5]~43\ & VCC))
@@ -415,7 +415,7 @@ PORT MAP (
 	combout => \counter[6]~44_combout\,
 	cout => \counter[6]~45\);
 
--- Location: FF_X2_Y13_N13
+-- Location: FF_X22_Y24_N13
 \counter[6]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -430,7 +430,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(6));
 
--- Location: LCCOMB_X2_Y13_N14
+-- Location: LCCOMB_X22_Y24_N14
 \counter[7]~46\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[7]~46_combout\ = (counter(7) & (!\counter[6]~45\)) # (!counter(7) & ((\counter[6]~45\) # (GND)))
@@ -448,7 +448,7 @@ PORT MAP (
 	combout => \counter[7]~46_combout\,
 	cout => \counter[7]~47\);
 
--- Location: FF_X2_Y13_N15
+-- Location: FF_X22_Y24_N15
 \counter[7]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -463,7 +463,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(7));
 
--- Location: LCCOMB_X2_Y13_N16
+-- Location: LCCOMB_X22_Y24_N16
 \counter[8]~48\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[8]~48_combout\ = (counter(8) & (\counter[7]~47\ $ (GND))) # (!counter(8) & (!\counter[7]~47\ & VCC))
@@ -481,7 +481,7 @@ PORT MAP (
 	combout => \counter[8]~48_combout\,
 	cout => \counter[8]~49\);
 
--- Location: FF_X2_Y13_N17
+-- Location: FF_X22_Y24_N17
 \counter[8]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -496,7 +496,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(8));
 
--- Location: LCCOMB_X2_Y13_N18
+-- Location: LCCOMB_X22_Y24_N18
 \counter[9]~50\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[9]~50_combout\ = (counter(9) & (!\counter[8]~49\)) # (!counter(9) & ((\counter[8]~49\) # (GND)))
@@ -514,7 +514,7 @@ PORT MAP (
 	combout => \counter[9]~50_combout\,
 	cout => \counter[9]~51\);
 
--- Location: FF_X2_Y13_N19
+-- Location: FF_X22_Y24_N19
 \counter[9]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -529,7 +529,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(9));
 
--- Location: LCCOMB_X2_Y13_N20
+-- Location: LCCOMB_X22_Y24_N20
 \counter[10]~52\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[10]~52_combout\ = (counter(10) & (\counter[9]~51\ $ (GND))) # (!counter(10) & (!\counter[9]~51\ & VCC))
@@ -547,7 +547,7 @@ PORT MAP (
 	combout => \counter[10]~52_combout\,
 	cout => \counter[10]~53\);
 
--- Location: FF_X2_Y13_N21
+-- Location: FF_X22_Y24_N21
 \counter[10]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -562,7 +562,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(10));
 
--- Location: LCCOMB_X2_Y13_N22
+-- Location: LCCOMB_X22_Y24_N22
 \counter[11]~54\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[11]~54_combout\ = (counter(11) & (!\counter[10]~53\)) # (!counter(11) & ((\counter[10]~53\) # (GND)))
@@ -580,7 +580,7 @@ PORT MAP (
 	combout => \counter[11]~54_combout\,
 	cout => \counter[11]~55\);
 
--- Location: FF_X2_Y13_N23
+-- Location: FF_X22_Y24_N23
 \counter[11]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -595,7 +595,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(11));
 
--- Location: LCCOMB_X2_Y13_N24
+-- Location: LCCOMB_X22_Y24_N24
 \counter[12]~56\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[12]~56_combout\ = (counter(12) & (\counter[11]~55\ $ (GND))) # (!counter(12) & (!\counter[11]~55\ & VCC))
@@ -613,7 +613,7 @@ PORT MAP (
 	combout => \counter[12]~56_combout\,
 	cout => \counter[12]~57\);
 
--- Location: FF_X2_Y13_N25
+-- Location: FF_X22_Y24_N25
 \counter[12]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -628,7 +628,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(12));
 
--- Location: LCCOMB_X2_Y13_N26
+-- Location: LCCOMB_X22_Y24_N26
 \counter[13]~58\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[13]~58_combout\ = (counter(13) & (!\counter[12]~57\)) # (!counter(13) & ((\counter[12]~57\) # (GND)))
@@ -646,7 +646,7 @@ PORT MAP (
 	combout => \counter[13]~58_combout\,
 	cout => \counter[13]~59\);
 
--- Location: FF_X2_Y13_N27
+-- Location: FF_X22_Y24_N27
 \counter[13]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -661,7 +661,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(13));
 
--- Location: LCCOMB_X2_Y13_N28
+-- Location: LCCOMB_X22_Y24_N28
 \counter[14]~60\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[14]~60_combout\ = (counter(14) & (\counter[13]~59\ $ (GND))) # (!counter(14) & (!\counter[13]~59\ & VCC))
@@ -679,7 +679,7 @@ PORT MAP (
 	combout => \counter[14]~60_combout\,
 	cout => \counter[14]~61\);
 
--- Location: FF_X2_Y13_N29
+-- Location: FF_X22_Y24_N29
 \counter[14]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -694,7 +694,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(14));
 
--- Location: LCCOMB_X2_Y13_N30
+-- Location: LCCOMB_X22_Y24_N30
 \counter[15]~62\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[15]~62_combout\ = (counter(15) & (!\counter[14]~61\)) # (!counter(15) & ((\counter[14]~61\) # (GND)))
@@ -712,7 +712,7 @@ PORT MAP (
 	combout => \counter[15]~62_combout\,
 	cout => \counter[15]~63\);
 
--- Location: FF_X2_Y13_N31
+-- Location: FF_X22_Y24_N31
 \counter[15]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -727,7 +727,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(15));
 
--- Location: LCCOMB_X2_Y12_N0
+-- Location: LCCOMB_X22_Y23_N0
 \counter[16]~64\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[16]~64_combout\ = (counter(16) & (\counter[15]~63\ $ (GND))) # (!counter(16) & (!\counter[15]~63\ & VCC))
@@ -745,7 +745,7 @@ PORT MAP (
 	combout => \counter[16]~64_combout\,
 	cout => \counter[16]~65\);
 
--- Location: FF_X2_Y12_N1
+-- Location: FF_X22_Y23_N1
 \counter[16]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -760,7 +760,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(16));
 
--- Location: LCCOMB_X2_Y12_N2
+-- Location: LCCOMB_X22_Y23_N2
 \counter[17]~66\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[17]~66_combout\ = (counter(17) & (!\counter[16]~65\)) # (!counter(17) & ((\counter[16]~65\) # (GND)))
@@ -778,7 +778,7 @@ PORT MAP (
 	combout => \counter[17]~66_combout\,
 	cout => \counter[17]~67\);
 
--- Location: FF_X2_Y12_N3
+-- Location: FF_X22_Y23_N3
 \counter[17]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -793,7 +793,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(17));
 
--- Location: LCCOMB_X2_Y12_N4
+-- Location: LCCOMB_X22_Y23_N4
 \counter[18]~68\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[18]~68_combout\ = (counter(18) & (\counter[17]~67\ $ (GND))) # (!counter(18) & (!\counter[17]~67\ & VCC))
@@ -811,7 +811,7 @@ PORT MAP (
 	combout => \counter[18]~68_combout\,
 	cout => \counter[18]~69\);
 
--- Location: FF_X2_Y12_N5
+-- Location: FF_X22_Y23_N5
 \counter[18]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -826,7 +826,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(18));
 
--- Location: LCCOMB_X1_Y12_N10
+-- Location: LCCOMB_X21_Y23_N10
 \LessThan0~6\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \LessThan0~6_combout\ = (((!counter(16) & !counter(15))) # (!counter(18))) # (!counter(17))
@@ -843,7 +843,7 @@ PORT MAP (
 	datad => counter(18),
 	combout => \LessThan0~6_combout\);
 
--- Location: LCCOMB_X2_Y12_N6
+-- Location: LCCOMB_X22_Y23_N6
 \counter[19]~70\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[19]~70_combout\ = (counter(19) & (!\counter[18]~69\)) # (!counter(19) & ((\counter[18]~69\) # (GND)))
@@ -861,7 +861,7 @@ PORT MAP (
 	combout => \counter[19]~70_combout\,
 	cout => \counter[19]~71\);
 
--- Location: FF_X2_Y12_N7
+-- Location: FF_X22_Y23_N7
 \counter[19]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -876,7 +876,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(19));
 
--- Location: LCCOMB_X2_Y12_N8
+-- Location: LCCOMB_X22_Y23_N8
 \counter[20]~72\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[20]~72_combout\ = (counter(20) & (\counter[19]~71\ $ (GND))) # (!counter(20) & (!\counter[19]~71\ & VCC))
@@ -894,7 +894,7 @@ PORT MAP (
 	combout => \counter[20]~72_combout\,
 	cout => \counter[20]~73\);
 
--- Location: FF_X2_Y12_N9
+-- Location: FF_X22_Y23_N9
 \counter[20]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -909,7 +909,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(20));
 
--- Location: LCCOMB_X2_Y12_N10
+-- Location: LCCOMB_X22_Y23_N10
 \counter[21]~74\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[21]~74_combout\ = (counter(21) & (!\counter[20]~73\)) # (!counter(21) & ((\counter[20]~73\) # (GND)))
@@ -927,7 +927,7 @@ PORT MAP (
 	combout => \counter[21]~74_combout\,
 	cout => \counter[21]~75\);
 
--- Location: FF_X2_Y12_N11
+-- Location: FF_X22_Y23_N11
 \counter[21]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -942,7 +942,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(21));
 
--- Location: LCCOMB_X2_Y12_N12
+-- Location: LCCOMB_X22_Y23_N12
 \counter[22]~76\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[22]~76_combout\ = (counter(22) & (\counter[21]~75\ $ (GND))) # (!counter(22) & (!\counter[21]~75\ & VCC))
@@ -960,7 +960,7 @@ PORT MAP (
 	combout => \counter[22]~76_combout\,
 	cout => \counter[22]~77\);
 
--- Location: FF_X2_Y12_N13
+-- Location: FF_X22_Y23_N13
 \counter[22]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -975,7 +975,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(22));
 
--- Location: LCCOMB_X2_Y12_N14
+-- Location: LCCOMB_X22_Y23_N14
 \counter[23]~78\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[23]~78_combout\ = (counter(23) & (!\counter[22]~77\)) # (!counter(23) & ((\counter[22]~77\) # (GND)))
@@ -993,7 +993,7 @@ PORT MAP (
 	combout => \counter[23]~78_combout\,
 	cout => \counter[23]~79\);
 
--- Location: FF_X2_Y12_N15
+-- Location: FF_X22_Y23_N15
 \counter[23]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1008,7 +1008,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(23));
 
--- Location: LCCOMB_X1_Y12_N0
+-- Location: LCCOMB_X21_Y23_N0
 \LessThan0~7\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \LessThan0~7_combout\ = ((!counter(19)) # (!counter(20))) # (!counter(21))
@@ -1024,7 +1024,7 @@ PORT MAP (
 	datad => counter(19),
 	combout => \LessThan0~7_combout\);
 
--- Location: LCCOMB_X1_Y12_N22
+-- Location: LCCOMB_X21_Y23_N22
 \LessThan0~8\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \LessThan0~8_combout\ = ((!counter(22) & ((\LessThan0~6_combout\) # (\LessThan0~7_combout\)))) # (!counter(23))
@@ -1041,7 +1041,7 @@ PORT MAP (
 	datad => \LessThan0~7_combout\,
 	combout => \LessThan0~8_combout\);
 
--- Location: LCCOMB_X2_Y12_N16
+-- Location: LCCOMB_X22_Y23_N16
 \counter[24]~80\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[24]~80_combout\ = (counter(24) & (\counter[23]~79\ $ (GND))) # (!counter(24) & (!\counter[23]~79\ & VCC))
@@ -1059,7 +1059,7 @@ PORT MAP (
 	combout => \counter[24]~80_combout\,
 	cout => \counter[24]~81\);
 
--- Location: FF_X2_Y12_N17
+-- Location: FF_X22_Y23_N17
 \counter[24]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1074,7 +1074,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(24));
 
--- Location: LCCOMB_X2_Y12_N18
+-- Location: LCCOMB_X22_Y23_N18
 \counter[25]~82\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[25]~82_combout\ = (counter(25) & (!\counter[24]~81\)) # (!counter(25) & ((\counter[24]~81\) # (GND)))
@@ -1092,7 +1092,7 @@ PORT MAP (
 	combout => \counter[25]~82_combout\,
 	cout => \counter[25]~83\);
 
--- Location: FF_X2_Y12_N19
+-- Location: FF_X22_Y23_N19
 \counter[25]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1107,7 +1107,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(25));
 
--- Location: LCCOMB_X2_Y12_N20
+-- Location: LCCOMB_X22_Y23_N20
 \counter[26]~84\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[26]~84_combout\ = (counter(26) & (\counter[25]~83\ $ (GND))) # (!counter(26) & (!\counter[25]~83\ & VCC))
@@ -1125,7 +1125,7 @@ PORT MAP (
 	combout => \counter[26]~84_combout\,
 	cout => \counter[26]~85\);
 
--- Location: FF_X2_Y12_N21
+-- Location: FF_X22_Y23_N21
 \counter[26]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1140,7 +1140,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(26));
 
--- Location: LCCOMB_X2_Y12_N22
+-- Location: LCCOMB_X22_Y23_N22
 \counter[27]~86\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[27]~86_combout\ = (counter(27) & (!\counter[26]~85\)) # (!counter(27) & ((\counter[26]~85\) # (GND)))
@@ -1158,7 +1158,7 @@ PORT MAP (
 	combout => \counter[27]~86_combout\,
 	cout => \counter[27]~87\);
 
--- Location: FF_X2_Y12_N23
+-- Location: FF_X22_Y23_N23
 \counter[27]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1173,10 +1173,10 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(27));
 
--- Location: LCCOMB_X1_Y12_N2
+-- Location: LCCOMB_X21_Y23_N2
 \LessThan0~0\ : cycloneiii_lcell_comb
 -- Equation(s):
--- \LessThan0~0_combout\ = (!counter(24) & (!counter(27) & (!counter(26) & !counter(25))))
+-- \LessThan0~0_combout\ = (!counter(25) & (!counter(24) & (!counter(26) & !counter(27))))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -1184,13 +1184,13 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => counter(24),
-	datab => counter(27),
+	dataa => counter(25),
+	datab => counter(24),
 	datac => counter(26),
-	datad => counter(25),
+	datad => counter(27),
 	combout => \LessThan0~0_combout\);
 
--- Location: LCCOMB_X1_Y12_N18
+-- Location: LCCOMB_X21_Y23_N18
 \LessThan0~2\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \LessThan0~2_combout\ = (!counter(16) & (!counter(22) & !counter(14)))
@@ -1206,10 +1206,10 @@ PORT MAP (
 	datad => counter(14),
 	combout => \LessThan0~2_combout\);
 
--- Location: LCCOMB_X1_Y13_N30
+-- Location: LCCOMB_X21_Y24_N30
 \LessThan0~4\ : cycloneiii_lcell_comb
 -- Equation(s):
--- \LessThan0~4_combout\ = (!counter(7) & (!counter(6) & (!counter(5) & !counter(8))))
+-- \LessThan0~4_combout\ = (!counter(5) & (!counter(6) & (!counter(7) & !counter(8))))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -1217,13 +1217,13 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => counter(7),
+	dataa => counter(5),
 	datab => counter(6),
-	datac => counter(5),
+	datac => counter(7),
 	datad => counter(8),
 	combout => \LessThan0~4_combout\);
 
--- Location: LCCOMB_X1_Y13_N20
+-- Location: LCCOMB_X21_Y24_N28
 \LessThan0~3\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \LessThan0~3_combout\ = (((!counter(11)) # (!counter(13))) # (!counter(12))) # (!counter(10))
@@ -1240,7 +1240,7 @@ PORT MAP (
 	datad => counter(11),
 	combout => \LessThan0~3_combout\);
 
--- Location: LCCOMB_X1_Y12_N8
+-- Location: LCCOMB_X21_Y23_N8
 \LessThan0~5\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \LessThan0~5_combout\ = (\LessThan0~2_combout\ & ((\LessThan0~3_combout\) # ((!counter(9) & \LessThan0~4_combout\))))
@@ -1257,7 +1257,7 @@ PORT MAP (
 	datad => \LessThan0~3_combout\,
 	combout => \LessThan0~5_combout\);
 
--- Location: LCCOMB_X2_Y12_N24
+-- Location: LCCOMB_X22_Y23_N24
 \counter[28]~88\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[28]~88_combout\ = (counter(28) & (\counter[27]~87\ $ (GND))) # (!counter(28) & (!\counter[27]~87\ & VCC))
@@ -1275,7 +1275,7 @@ PORT MAP (
 	combout => \counter[28]~88_combout\,
 	cout => \counter[28]~89\);
 
--- Location: FF_X2_Y12_N25
+-- Location: FF_X22_Y23_N25
 \counter[28]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1290,7 +1290,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(28));
 
--- Location: LCCOMB_X2_Y12_N26
+-- Location: LCCOMB_X22_Y23_N26
 \counter[29]~90\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[29]~90_combout\ = (counter(29) & (!\counter[28]~89\)) # (!counter(29) & ((\counter[28]~89\) # (GND)))
@@ -1308,7 +1308,7 @@ PORT MAP (
 	combout => \counter[29]~90_combout\,
 	cout => \counter[29]~91\);
 
--- Location: FF_X2_Y12_N27
+-- Location: FF_X22_Y23_N27
 \counter[29]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1323,7 +1323,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(29));
 
--- Location: LCCOMB_X2_Y12_N28
+-- Location: LCCOMB_X22_Y23_N28
 \counter[30]~92\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[30]~92_combout\ = (counter(30) & (\counter[29]~91\ $ (GND))) # (!counter(30) & (!\counter[29]~91\ & VCC))
@@ -1341,7 +1341,7 @@ PORT MAP (
 	combout => \counter[30]~92_combout\,
 	cout => \counter[30]~93\);
 
--- Location: FF_X2_Y12_N29
+-- Location: FF_X22_Y23_N29
 \counter[30]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1356,7 +1356,7 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(30));
 
--- Location: LCCOMB_X2_Y12_N30
+-- Location: LCCOMB_X22_Y23_N30
 \counter[31]~94\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \counter[31]~94_combout\ = counter(31) $ (\counter[30]~93\)
@@ -1371,7 +1371,7 @@ PORT MAP (
 	cin => \counter[30]~93\,
 	combout => \counter[31]~94_combout\);
 
--- Location: FF_X2_Y12_N31
+-- Location: FF_X22_Y23_N31
 \counter[31]\ : dffeas
 -- pragma translate_off
 GENERIC MAP (
@@ -1386,10 +1386,10 @@ PORT MAP (
 	devpor => ww_devpor,
 	q => counter(31));
 
--- Location: LCCOMB_X1_Y12_N12
+-- Location: LCCOMB_X21_Y23_N12
 \LessThan0~1\ : cycloneiii_lcell_comb
 -- Equation(s):
--- \LessThan0~1_combout\ = (!counter(29) & (!counter(30) & (!counter(31) & !counter(28))))
+-- \LessThan0~1_combout\ = (!counter(31) & (!counter(30) & (!counter(29) & !counter(28))))
 
 -- pragma translate_off
 GENERIC MAP (
@@ -1397,13 +1397,13 @@ GENERIC MAP (
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => counter(29),
+	dataa => counter(31),
 	datab => counter(30),
-	datac => counter(31),
+	datac => counter(29),
 	datad => counter(28),
 	combout => \LessThan0~1_combout\);
 
--- Location: LCCOMB_X1_Y12_N28
+-- Location: LCCOMB_X21_Y23_N28
 \LessThan0~9\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \LessThan0~9_combout\ = (((!\LessThan0~8_combout\ & !\LessThan0~5_combout\)) # (!\LessThan0~1_combout\)) # (!\LessThan0~0_combout\)
@@ -1420,7 +1420,7 @@ PORT MAP (
 	datad => \LessThan0~1_combout\,
 	combout => \LessThan0~9_combout\);
 
--- Location: LCCOMB_X1_Y12_N16
+-- Location: LCCOMB_X21_Y23_N20
 \actuadorTalanquera~reg0feeder\ : cycloneiii_lcell_comb
 -- Equation(s):
 -- \actuadorTalanquera~reg0feeder_combout\ = \LessThan0~9_combout\
@@ -1434,7 +1434,7 @@ PORT MAP (
 	datad => \LessThan0~9_combout\,
 	combout => \actuadorTalanquera~reg0feeder_combout\);
 
--- Location: FF_X1_Y12_N17
+-- Location: FF_X21_Y23_N21
 \actuadorTalanquera~reg0\ : dffeas
 -- pragma translate_off
 GENERIC MAP (

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Peaje_electronico
-Thu May 09 17:05:03 2024
+Thu May 09 17:38:13 2024
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -17,14 +17,15 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   9. State Machine - |Peaje_electronico|ControlVehicular:ControlVehicular_inst|ESTADO
  10. User-Specified and Inferred Latches
  11. Registers Removed During Synthesis
- 12. General Register Statistics
- 13. Multiplexer Restructuring Statistics (Restructuring Performed)
- 14. Parameter Settings for User Entity Instance: Divisor_Frecuencia:Divisor_Frecuencia_inst
- 15. Port Connectivity Checks: "LCDArduino:LCDArduino_inst"
- 16. Port Connectivity Checks: "Maq_estados:Maq_estados_inst"
- 17. Port Connectivity Checks: "SemaforoTalanquera:SemaforoTalanquera_inst"
- 18. Elapsed Time Per Partition
- 19. Analysis & Synthesis Messages
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: Divisor_Frecuencia:Divisor_Frecuencia_inst
+ 16. Port Connectivity Checks: "LCDArduino:LCDArduino_inst"
+ 17. Port Connectivity Checks: "Maq_estados:Maq_estados_inst"
+ 18. Port Connectivity Checks: "SemaforoTalanquera:SemaforoTalanquera_inst"
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
 
 
 
@@ -50,7 +51,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu May 09 17:05:03 2024      ;
+; Analysis & Synthesis Status        ; Successful - Thu May 09 17:38:13 2024      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; Peaje_electronico                          ;
 ; Top-level Entity Name              ; Peaje_electronico                          ;
@@ -295,6 +296,16 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-------------------------------------------------------+----------------------------------------+
 
 
++---------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                   ;
++-----------------------------------------+---------------------------+-----------------------------------------+
+; Register name                           ; Reason for Removal        ; Registers Removed due to This Register  ;
++-----------------------------------------+---------------------------+-----------------------------------------+
+; LCDArduino:LCDArduino_inst|datos_lcd[2] ; Stuck at GND              ; LCDArduino:LCDArduino_inst|datos_lcd[1] ;
+;                                         ; due to stuck port data_in ;                                         ;
++-----------------------------------------+---------------------------+-----------------------------------------+
+
+
 +------------------------------------------------------+
 ; General Register Statistics                          ;
 +----------------------------------------------+-------+
@@ -376,7 +387,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu May 09 17:05:02 2024
+    Info: Processing started: Thu May 09 17:38:12 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Peaje_electronico -c Peaje_electronico
 Info (11104): Parallel Compilation has detected 8 hyper-threaded processors. However, the extra hyper-threaded processors will not be used by default. Parallel Compilation will use 4 of the 4 physical processors detected instead.
 Info (12021): Found 2 design units, including 1 entities, in source file /users/dell/documents/vhdl/parcial2-grupal/lcd-arduino-señales/lcdarduino.vhd
@@ -503,9 +514,9 @@ Info (21057): Implemented 268 device resources after synthesis - the final resou
     Info (21059): Implemented 52 output pins
     Info (21061): Implemented 202 logic cells
 Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 45 warnings
-    Info: Peak virtual memory: 4667 megabytes
-    Info: Processing ended: Thu May 09 17:05:03 2024
-    Info: Elapsed time: 00:00:01
+    Info: Peak virtual memory: 4680 megabytes
+    Info: Processing ended: Thu May 09 17:38:14 2024
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 

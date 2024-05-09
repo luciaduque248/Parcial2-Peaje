@@ -3,31 +3,31 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1200mV 85C Model Setup 'CLK'
-Slack : -2.188
-TNS   : -213.557
+Slack : -2.187
+TNS   : -219.876
 
 Type  : Slow 1200mV 85C Model Setup 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : -0.712
-TNS   : -0.713
-
-Type  : Slow 1200mV 85C Model Setup 'FRONT_SENSOR_PEAJE'
-Slack : -0.086
-TNS   : -0.278
+Slack : -0.765
+TNS   : -1.043
 
 Type  : Slow 1200mV 85C Model Setup 'BACK_SENSOR_PEAJE'
-Slack : -0.073
-TNS   : -0.234
+Slack : -0.078
+TNS   : -0.250
+
+Type  : Slow 1200mV 85C Model Setup 'FRONT_SENSOR_PEAJE'
+Slack : -0.077
+TNS   : -0.250
 
 Type  : Slow 1200mV 85C Model Hold 'CLK'
-Slack : -0.238
-TNS   : -3.383
+Slack : -0.031
+TNS   : -0.061
 
 Type  : Slow 1200mV 85C Model Hold 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : 0.005
+Slack : 0.159
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'BACK_SENSOR_PEAJE'
-Slack : 0.358
+Slack : 0.359
 TNS   : 0.000
 
 Type  : Slow 1200mV 85C Model Hold 'FRONT_SENSOR_PEAJE'
@@ -47,38 +47,38 @@ Slack : -3.000
 TNS   : -7.000
 
 Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : 0.345
+Slack : 0.430
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Setup 'CLK'
-Slack : -1.788
-TNS   : -175.148
+Slack : -1.787
+TNS   : -181.421
 
 Type  : Slow 1200mV 0C Model Setup 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : -0.525
-TNS   : -0.525
-
-Type  : Slow 1200mV 0C Model Setup 'FRONT_SENSOR_PEAJE'
-Slack : 0.036
-TNS   : 0.000
+Slack : -0.573
+TNS   : -0.731
 
 Type  : Slow 1200mV 0C Model Setup 'BACK_SENSOR_PEAJE'
-Slack : 0.048
+Slack : 0.043
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'FRONT_SENSOR_PEAJE'
+Slack : 0.044
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'CLK'
-Slack : -0.219
-TNS   : -2.600
+Slack : -0.035
+TNS   : -0.062
 
 Type  : Slow 1200mV 0C Model Hold 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : 0.057
-TNS   : 0.000
-
-Type  : Slow 1200mV 0C Model Hold 'FRONT_SENSOR_PEAJE'
-Slack : 0.312
+Slack : 0.195
 TNS   : 0.000
 
 Type  : Slow 1200mV 0C Model Hold 'BACK_SENSOR_PEAJE'
+Slack : 0.312
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'FRONT_SENSOR_PEAJE'
 Slack : 0.313
 TNS   : 0.000
 
@@ -95,44 +95,44 @@ Slack : -3.000
 TNS   : -7.000
 
 Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : 0.419
+Slack : 0.468
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'CLK'
-Slack : -0.829
-TNS   : -57.262
+Slack : -0.828
+TNS   : -60.200
 
 Type  : Fast 1200mV 0C Model Setup 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : 0.007
+Slack : -0.072
+TNS   : -0.072
+
+Type  : Fast 1200mV 0C Model Setup 'BACK_SENSOR_PEAJE'
+Slack : 0.393
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Setup 'FRONT_SENSOR_PEAJE'
-Slack : 0.389
-TNS   : 0.000
-
-Type  : Fast 1200mV 0C Model Setup 'BACK_SENSOR_PEAJE'
-Slack : 0.400
+Slack : 0.395
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'CLK'
-Slack : -0.162
-TNS   : -3.615
+Slack : -0.124
+TNS   : -1.376
 
 Type  : Fast 1200mV 0C Model Hold 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : -0.055
-TNS   : -0.103
-
-Type  : Fast 1200mV 0C Model Hold 'FRONT_SENSOR_PEAJE'
-Slack : 0.187
+Slack : 0.013
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Hold 'BACK_SENSOR_PEAJE'
+Slack : 0.187
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'FRONT_SENSOR_PEAJE'
 Slack : 0.188
 TNS   : 0.000
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLK'
 Slack : -3.000
-TNS   : -162.310
+TNS   : -162.793
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'FRONT_SENSOR_PEAJE'
 Slack : -3.000
@@ -143,7 +143,7 @@ Slack : -3.000
 TNS   : -7.224
 
 Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Maq_estados:Maq_estados_inst|current_state.inicio'
-Slack : 0.313
+Slack : 0.333
 TNS   : 0.000
 
 ------------------------------------------------------------
