@@ -75,6 +75,7 @@ architecture Peaje_electronico_arch of Peaje_electronico is
     
 	 -- Señal de salida del divisor de frecuencia
     --signal clk_out_divisor : std_logic;
+	 
 
     -- Componentes
     component Front_sensor
@@ -150,13 +151,11 @@ architecture Peaje_electronico_arch of Peaje_electronico is
 
     component Calcular_Tarifa
         port (
-            --entrada
-            CLK : in std_logic;                           -- Señal de reloj
-            CATEGORIA_VEHICULO : in std_logic_vector(2 downto 0);-- Categoría del vehículo (2 bits)
-            TIEMPO_PASO : in unsigned(15 downto 0);       -- Tiempo de paso del vehículo (16 bits)
-            --salida
-            TARIFA : out unsigned(7 downto 0)             -- Tarifa calculada
-        );
+				CLK : in std_logic;                           -- Señal de reloj
+			  CATEGORIA_VEHICULO : in std_logic_vector(2 downto 0); -- Categoría del vehículo (3 bits)
+			  TIEMPO_PASO : in unsigned(15 downto 0);       -- Tiempo de paso del vehículo (16 bits)
+			  TARIFA : out std_logic   			
+			);
     end component;
 
     -- Componente Divisor de Frecuencia
@@ -268,7 +267,7 @@ begin
         CLK => CLK,
         CATEGORIA_VEHICULO => CATEGORIA_VEHICULO,
         TIEMPO_PASO => tiempo_paso_int,
-        TARIFA => tarifa_calculada
+        TARIFA => cobrar_maq  
     );
 
     -- Instanciar Divisor de Frecuencia
